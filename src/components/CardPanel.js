@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import styled, { css }  from 'styled-components'
 import theme from '../layouts/theme'
 import { CcVisa, CcAmex, CcDiscover, CcMastercard } from 'styled-icons/fa-brands'
-import Visa from '../images/Visa.svg'
+import Visa from '../images/visa.svg'
 
 
 const panelBackgroundColor = (props) => {
