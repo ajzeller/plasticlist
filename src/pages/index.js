@@ -16,12 +16,9 @@ require('typeface-ibm-plex-sans')
 require('typeface-lekton')
 require('typeface-share-tech-mono')
 
-
-
-
 const Container = styled.div`
   color: ${props => props.theme.greyText};
-  font-family: 'IBM Plex Sans',
+  font-family: 'IBM Plex Sans';
   margin: 3rem auto;
   max-width: 600px;
   display: flex;
@@ -34,6 +31,8 @@ const Container = styled.div`
   ${media.tablet`background-color: green;`}
   ${media.phone`background-color: red;`}
 `
+
+
 
 const IndexPage = ({ data }) => (
   <Layout>

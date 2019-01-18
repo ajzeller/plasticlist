@@ -5,25 +5,28 @@ import Img from "gatsby-image"
 import styled from 'styled-components'
 import theme from '../layouts/theme'
 import logo from '../images/plastic-list-logo-1.svg'
+import logo2 from '../images/plastic-list-logo-2.svg'
+
 
 
 const HeaderContainer = styled.div`
-  /* font-family: share tech mono; */
-  font-family: IBM Plex sans;
-  background-color: ${theme.greyPanelBackground};
+  font-family: share tech mono;
+  /* font-family: IBM Plex sans; */
+  /* background-color: ${theme.greyPanelBackground}; */
+  background-color: ${theme.black};
   border-bottom: 2px solid ${theme.greyBorderDark};
   width: 100vw;
   margin: auto;
-  box-shadow: ${theme.panelShadow};
+  /* box-shadow: ${theme.panelShadow}; */
   min-height: 70px;
-
+  font-weight: 100;
 `
 
 const HeaderInnerContainer = styled.div`
   max-width: 1000px;
   margin: auto;
   display: grid;
-  grid-template-columns: 2fr 10fr;
+  grid-template-columns: 80px 1fr;
   /* justify-items: center; */
   align-items: center;
   height: 70px;
@@ -32,17 +35,25 @@ const HeaderInnerContainer = styled.div`
 const LogoImage = styled.img`
     justify-self: center;
 
-    height: 30px;
-    margin: 0px;
+    height: 60px;
+    margin: 0px 0px;
 `
 
 const LogoText = styled(Link)`
     text-transform: uppercase;
     text-decoration: none;
-    color: ${theme.black};
-    font-weight: 400;
+    color: ${theme.white};
+    font-weight: 600;
     font-size: 1.5rem;
     letter-spacing: 0px;
+
+    span {
+        background: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#E0E0E0));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        /* text-shadow: 0px 0px 1px rgba(0, 0, 0, 1); */
+
+    }
 `
 
 class Header extends React.Component {
@@ -56,7 +67,7 @@ class Header extends React.Component {
       <HeaderContainer>
         <HeaderInnerContainer>
           <LogoImage src={logo} /> 
-          <LogoText to="/">{this.props.siteTitle}</LogoText>
+          <LogoText to="/"><span>{this.props.siteTitle}</span></LogoText>
         </HeaderInnerContainer>
 
       </HeaderContainer>

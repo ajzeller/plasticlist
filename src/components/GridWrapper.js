@@ -13,11 +13,11 @@ const panelStyle = {
 }
 
 const GridContainer = styled.div`
-    margin: auto;
+    margin: auto auto 20px auto;
     max-width: 1000px;
-    padding: 10px 10px;
+    padding: 5px 5px;
     display: grid;
-    grid-gap: 10px;
+    grid-gap: 8px;
     ${media.giant`grid-template-columns: 1fr 1fr 1fr 1fr;`}
     ${media.desktop`grid-template-columns: 1fr 1fr 1fr;`}
     ${media.tablet`grid-template-columns: 1fr 1fr;`}

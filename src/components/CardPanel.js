@@ -4,6 +4,8 @@ import styled, { css }  from 'styled-components'
 import theme from '../layouts/theme'
 import { CcVisa, CcAmex, CcDiscover, CcMastercard } from 'styled-icons/fa-brands'
 import Visa from '../images/visa.svg'
+import media from '../layouts/media'
+
 
 
 const panelBackgroundColor = (props) => {
@@ -12,7 +14,7 @@ const panelBackgroundColor = (props) => {
 
 const Panel = styled.div`
     font-family: share tech mono;
-    font-size: 16px;
+    /* font-size: 16px; */
     display: grid;
     /* border: 1px solid ${theme.greyBorderLight}; */
     /* margin: 10px; */
@@ -27,6 +29,11 @@ const Panel = styled.div`
     background-color: #F9A021;
     background-image: ${ props => panelBackgroundColor(props) };
     box-shadow: ${theme.panelShadow};
+
+    ${media.giant`font-size: 24px;`}
+    ${media.desktop`font-size: 20px;`}
+    ${media.tablet`font-size: 18px;`}
+    ${media.phone`font-size: 16px;`}
 `
 
 const CardUpper = styled.div`
@@ -86,7 +93,7 @@ const ContainerSpend = styled.div`
 
 const Label = styled.span`
     color: ${theme.greyText};
-    font-size: 0.5rem;
+    font-size: 0.8em;
     font-weight: 700;
 `
 
@@ -124,7 +131,7 @@ const AnnualFee = styled.div`
 `
 
 class CardPanel extends React.Component {
-    constructor([props]){
+    constructor(props){
         super(props)
         // this.setState(
 

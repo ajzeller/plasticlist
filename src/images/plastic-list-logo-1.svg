@@ -1,13 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="160px" height="100px" viewBox="0 0 160 100" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<svg width="250px" height="250px" viewBox="0 0 250 250" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
-    <title>cc-logo</title>
+    <title>plastic-list-logo-1 copy</title>
     <desc>Created with Sketch.</desc>
-    <g id="cc-logo" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <rect id="Rectangle" stroke="#4A4A4A" stroke-width="7" x="3.5" y="3.5" width="153" height="93" rx="12"></rect>
-        <rect id="Rectangle" fill="#4A4A4A" x="0" y="13.9845947" width="160" height="23.8298251"></rect>
-        <g id="Group" transform="translate(14.500000, 42.672439)" fill="#4A4A4A">
-            <rect id="Rectangle" x="0.0790030749" y="7.77691098" width="26" height="19" rx="5"></rect>
+    <defs>
+        <filter x="-6.9%" y="-9.7%" width="113.8%" height="119.4%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.25 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <linearGradient x1="-1.11022302e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-2">
+            <stop stop-color="#FBD249" offset="0%"></stop>
+            <stop stop-color="#F5A623" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="-1.11022302e-14%" y1="50%" x2="100%" y2="50%" id="linearGradient-3">
+            <stop stop-color="#FF5E5E" offset="0%"></stop>
+            <stop stop-color="#FF3030" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="1.89441835%" y1="50%" x2="100%" y2="50%" id="linearGradient-4">
+            <stop stop-color="#6DB9FD" offset="0%"></stop>
+            <stop stop-color="#3579C8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="plastic-list-logo-1-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-3" transform="translate(27.500000, 55.500000)">
+            <g id="Group-2" filter="url(#filter-1)">
+                <rect id="Rectangle" fill="url(#linearGradient-2)" x="34.7148488" y="0.837894895" width="160" height="100" rx="10"></rect>
+                <rect id="Rectangle" fill="url(#linearGradient-3)" x="15.4482192" y="20.072483" width="160" height="100" rx="10"></rect>
+                <rect id="Rectangle" fill="url(#linearGradient-4)" x="0" y="39" width="160" height="100" rx="10"></rect>
+            </g>
+            <rect id="Rectangle" fill-opacity="0.570425725" fill="#FFFFFF" x="0" y="61" width="160" height="24"></rect>
         </g>
     </g>
 </svg>
