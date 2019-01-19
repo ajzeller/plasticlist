@@ -2,14 +2,14 @@ import React from 'react'
 import { Link } from 'gatsby'
 
 import Layout from '../components/layout'
-import styled, {ThemeProvider} from 'styled-components'
+import styled, { ThemeProvider } from 'styled-components'
 import theme from '../layouts/theme'
 import media from '../layouts/media'
-
 
 import Image from '../components/image'
 import SEO from '../components/seo'
 import GridWrapper from '../components/GridWrapper'
+import DataHandler from '../components/DataHandler'
 
 // Load IBM Plex Sans typeface
 require('typeface-ibm-plex-sans')
@@ -25,48 +25,27 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 1rem;
+  border-radius: 1rem;  
   ${media.desktop`background-color: blue;`}
   ${media.giant`background-color: #fff;`}
   ${media.tablet`background-color: green;`}
   ${media.phone`background-color: red;`}
 `
 
-
-
 const IndexPage = ({ data }) => (
-  <Layout>
-    <ThemeProvider theme={theme}>
-      <div>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-        <GridWrapper data ={data}>
-        <Container theme={theme}>
-            <h1>testing styled components</h1>
-          </Container>
+  <div>
+    <DataHandler data={data} />
 
-          {/* <h1>Here's some credit cards:</h1>
-          
-          
-          {console.log(data.allAirtable)}
+    {/* <Layout>
+  <ThemeProvider theme={theme}>
+    <div>
+      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <GridWrapper data={data}></GridWrapper>
 
-          {data.allAirtable.edges.map((edge, i) => (
-            <div>
-              <h3>{edge.node.data.card_name}</h3>
-              <h4>{edge.node.data.card_issuer}</h4>
-              <h5>{edge.node.data.network}</h5>
-            </div>
-        
-          
-          // <Link to={edge.node.data.Path} key={i}>
-          // </Link>
-          ))} */}
-          
-        </GridWrapper>
-
-        {/* <Link to="/page-2/">Go to page 2</Link> */}
-      </div>
-    </ThemeProvider>
-  </Layout>
+    </div>
+  </ThemeProvider>
+</Layout> */}
+  </div>
 )
 
 export default IndexPage
