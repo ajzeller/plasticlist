@@ -38,6 +38,7 @@ const theme = {
 
     panelShadow: '0px 3px 7px 0px rgba(0, 0, 0, 0.25)',
     panelTextShadow: '0px 3px 7px rgba(0, 0, 0, 0.25)',
+    panelRadius: '15px',
 
 }
 

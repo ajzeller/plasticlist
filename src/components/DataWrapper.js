@@ -11,7 +11,7 @@ import GridWrapper from '../components/GridWrapper'
 
 
 
-class DataHandler extends React.Component {
+class DataWrapper extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -22,17 +22,15 @@ class DataHandler extends React.Component {
 
   render() {
     return (
-      <Layout>
         <ThemeProvider theme={theme}>
           <div>
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
             <GridWrapper data={this.state.data}></GridWrapper>
-
+            {this.props.children}
           </div>
         </ThemeProvider>
-      </Layout>
     )
   }
 }
 
-export default DataHandler
+export default DataWrapper

@@ -4,6 +4,7 @@ import { StaticQuery, graphql } from 'gatsby'
 
 import Header from './header'
 import Footer from './Footer'
+import DataWrapper from './DataWrapper'
 import './layout.css'
 
 const Layout = ({ children }) => (
@@ -18,7 +19,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <div>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -33,7 +34,7 @@ const Layout = ({ children }) => (
           
           <Footer />
         </div>
-      </>
+      </div>
     )}
   />
 )

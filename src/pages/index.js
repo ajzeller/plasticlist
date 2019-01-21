@@ -9,7 +9,7 @@ import media from '../layouts/media'
 import Image from '../components/image'
 import SEO from '../components/seo'
 import GridWrapper from '../components/GridWrapper'
-import DataHandler from '../components/DataHandler'
+import DataWrapper from '../components/DataWrapper'
 
 // Load IBM Plex Sans typeface
 require('typeface-ibm-plex-sans')
@@ -33,8 +33,10 @@ const Container = styled.div`
 `
 
 const IndexPage = ({ data }) => (
-  <div>
-    <DataHandler data={data} />
+  <Layout>
+    <DataWrapper data={data} />
+    <Link to="/page-2">Go to page 2</Link>
+
 
     {/* <Layout>
   <ThemeProvider theme={theme}>
@@ -45,7 +47,7 @@ const IndexPage = ({ data }) => (
     </div>
   </ThemeProvider>
 </Layout> */}
-  </div>
+  </Layout>
 )
 
 export default IndexPage

@@ -8,6 +8,13 @@ import logo from '../images/plastic-list-logo-1.svg'
 import logo2 from '../images/plastic-list-logo-2.svg'
 import { SortAmountDown, Filter } from 'styled-icons/fa-solid'
 import { AccountCircle, Lock } from 'styled-icons/material'
+import { SliderAlt } from 'styled-icons/boxicons-regular'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import MenuIcon from '@material-ui/icons/Menu'
+import Typography from '@material-ui/core/Typography'
+import RefineDialog from '../components/RefineDialog';
 
 const HeaderContainer = styled.div`
   font-family: share tech mono;
@@ -26,7 +33,7 @@ const HeaderInnerContainer = styled.div`
   max-width: 1000px;
   margin: auto;
   display: grid;
-  grid-template-columns: 65px 1fr 50px 40px;
+  grid-template-columns: 65px 1fr 40px 50px;
   padding: 0 10px;
   /* grid-gap: 10px; */
   /* justify-items: center; */
@@ -78,37 +85,85 @@ const ShinyText = styled.span`
     }
 `
 
-const IconWrapper = styled.div`
+const IconButtonWrapper = styled.button`
   /* width: 25px; */
   text-transform: uppercase;
   color: ${theme.white};
   font-weight: 600;
   margin-left: 15px;
+  font-size: 16px;
+  background: none;
+  padding: 0px;
+  border: none;
   /* background-color: ${theme.greyBorderDark}; */
+`
+
+const SettingsIconWrapper = styled(IconButtonWrapper)`
+  /* font-size: 20px; */
+  height: 50px;
 `
 
 class Header extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      menuClicked: false,
+      clickCount: 1,
+      name: "menu",
+      open: false,
+    }
+
+    this.handleMenuClick = this.handleMenuClick.bind(this);
+
   }
+
+  handleMenuClick(param) {
+    this.setState({
+      menuClicked: !this.state.menuClicked,
+    })
+    console.log(param)
+  }
+
+  handleSettingsClick() {
+    this.setState({
+      open: !this.state.open,
+    })
+  }
+
+  handleClickOpen = () => {
+    this.setState({
+      open: true,
+    });
+  };
+
+  handleClose = value => {
+    this.setState({ open: false });
+  };
 
   render() {
     return (
-      <HeaderContainer>
-        <HeaderInnerContainer>
-          <LogoImage src={logo} />
-          <LogoText to="/">
-            <span>{this.props.siteTitle}</span>
-          </LogoText>
-          <IconWrapper><ShinyText>menu</ShinyText></IconWrapper>
-          <IconWrapper>
-            <ShinyText><Filter /></ShinyText>
-          </IconWrapper>
-          {/* <IconWrapper>
-            <ShinyText><SortAmountDown /></ShinyText>
-          </IconWrapper> */}
-        </HeaderInnerContainer>
-      </HeaderContainer>
+      <div>
+        <HeaderContainer>
+          <HeaderInnerContainer>
+            <LogoImage src={logo} />
+            <LogoText to="/">
+              <span>{this.props.siteTitle}</span>
+            </LogoText>
+            <SettingsIconWrapper onClick={() => this.handleSettingsClick()}><SliderAlt /></SettingsIconWrapper>
+            <IconButtonWrapper onClick={() => this.handleMenuClick(this.state.name)}>
+              <ShinyText>
+                {this.state.name}
+              </ShinyText>
+            </IconButtonWrapper>
+          </HeaderInnerContainer>
+        </HeaderContainer>
+        <RefineDialog 
+          open={this.state.open}
+          onClose={this.handleClose}
+        />
+      </div>
+
+      
     )
   }
 }
