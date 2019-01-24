@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import media from '../layouts/media'
 
 import CardPanel from '../components/CardPanel'
+import RefineMenuWrapper from '../components/RefineMenuWrapper'
 
 const panelStyle = {
   border: '1px solid grey',
@@ -37,6 +38,8 @@ class GridWrapper extends React.Component {
         {console.log('testing props')}
 
         {console.log(this.props.data.allAirtable)}
+
+
 
         {this.props.data.allAirtable.edges.map((edge, i) => (
           <CardPanel

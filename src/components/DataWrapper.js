@@ -8,8 +8,12 @@ import media from '../layouts/media'
 import Image from '../components/image'
 import SEO from '../components/seo'
 import GridWrapper from '../components/GridWrapper'
+import RefineMenuWrapper from '../components/RefineMenuWrapper'
 
-
+const MainContainer = styled.div`
+    max-width: 1000px;
+    margin: auto;
+`
 
 class DataWrapper extends React.Component {
   constructor(props) {
@@ -23,11 +27,12 @@ class DataWrapper extends React.Component {
   render() {
     return (
         <ThemeProvider theme={theme}>
-          <div>
+          <MainContainer>
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+            <RefineMenuWrapper />
             <GridWrapper data={this.state.data}></GridWrapper>
             {this.props.children}
-          </div>
+          </MainContainer>
         </ThemeProvider>
     )
   }

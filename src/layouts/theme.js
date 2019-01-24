@@ -13,7 +13,11 @@ const theme = {
     lightGreyBackground: '#fafafa',
     greyPanelBackground: '#F8F8F8',
 
+    
     // theme colors
+    
+    primary: '#117ACA',
+    secondary: '#4A4A4A',
 
     // cc colors
 

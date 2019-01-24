@@ -13,6 +13,10 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
+import TuneIcon from '@material-ui/icons/Tune'
+import Button from '@material-ui/core/Button';
+import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
+
 import Typography from '@material-ui/core/Typography'
 import RefineDialog from '../components/RefineDialog';
 
@@ -20,12 +24,12 @@ const HeaderContainer = styled.div`
   font-family: share tech mono;
   /* font-family: IBM Plex sans; */
   /* background-color: ${theme.greyPanelBackground}; */
-  background-color: ${theme.black};
+  background-color: ${theme.primary};
   border-bottom: 2px solid ${theme.greyBorderDark};
   width: 100vw;
   margin: auto;
   /* box-shadow: ${theme.panelShadow}; */
-  min-height: 70px;
+  min-height: 60px;
   font-weight: 100;
 `
 
@@ -33,12 +37,12 @@ const HeaderInnerContainer = styled.div`
   max-width: 1000px;
   margin: auto;
   display: grid;
-  grid-template-columns: 65px 1fr 40px 50px;
+  grid-template-columns: 65px 1fr 60px;
   padding: 0 10px;
   /* grid-gap: 10px; */
   /* justify-items: center; */
   align-items: center;
-  height: 70px;
+  height: 60px;
 `
 
 const LogoImage = styled.img`
@@ -56,6 +60,11 @@ const LogoText = styled(Link)`
   font-size: 1.5rem;
   letter-spacing: 0px;
   margin: 0px 0px 0px 15px;
+  justify-self: left;
+
+  &:focus {
+    text-decoration: none;
+  }
 
   span {
     background: -webkit-gradient(
@@ -85,7 +94,7 @@ const ShinyText = styled.span`
     }
 `
 
-const IconButtonWrapper = styled.button`
+const IconButtonWrapper = styled.div`
   /* width: 25px; */
   text-transform: uppercase;
   color: ${theme.white};
@@ -102,6 +111,28 @@ const SettingsIconWrapper = styled(IconButtonWrapper)`
   /* font-size: 20px; */
   height: 50px;
 `
+
+const styles = {
+  root: {
+    flexGrow: 1,
+  },
+  grow: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginLeft: -12,
+    marginRight: 20,
+  },
+};
+
+const IconButtonSettings = styled(IconButton)`
+  color: ${theme.white};
+`
+
+const TuneIconWhite = styled(TuneIcon)`
+  color: ${theme.white};
+`
+
 
 class Header extends React.Component {
   constructor(props) {
@@ -143,17 +174,50 @@ class Header extends React.Component {
   render() {
     return (
       <div>
+
+          {/* <div className={classes.root}> */}
+          <div>
+            {/* <AppBar position="static" color="primary">
+              <Toolbar>
+                <IconButton color="inherit" aria-label="Menu">
+                  <MenuIcon />
+                </IconButton>
+
+                
+                <Typography variant="h6" color="inherit" >
+                  Plastic List
+                </Typography>
+
+                <IconButton>
+                  <SliderAlt />
+
+                </IconButton>
+
+                <IconButtonSettings onClick={() => this.handleSettingsClick()}>
+              <TuneIconWhite />
+            </IconButtonSettings>
+              </Toolbar>
+            </AppBar> */}
+          </div>
+
         <HeaderContainer>
           <HeaderInnerContainer>
-            <LogoImage src={logo} />
+            <Link to="/"><LogoImage src={logo}  /></Link>
             <LogoText to="/">
               <span>{this.props.siteTitle}</span>
             </LogoText>
-            <SettingsIconWrapper onClick={() => this.handleSettingsClick()}><SliderAlt /></SettingsIconWrapper>
+
+            {/* <IconButtonWrapper>
+              <IconButton onClick={() => this.handleSettingsClick()} >
+                <TuneIconWhite />
+              </IconButton>
+            </IconButtonWrapper> */}
+            
+            {/* <SettingsIconWrapper onClick={() => this.handleSettingsClick()}><SliderAlt /></SettingsIconWrapper> */}
             <IconButtonWrapper onClick={() => this.handleMenuClick(this.state.name)}>
-              <ShinyText>
-                {this.state.name}
-              </ShinyText>
+              <IconButton onClick={() => this.handleSettingsClick()} color="inherit" aria-label="Menu">
+                    <MenuIcon  />
+              </IconButton>
             </IconButtonWrapper>
           </HeaderInnerContainer>
         </HeaderContainer>

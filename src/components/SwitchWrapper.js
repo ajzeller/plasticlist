@@ -21,7 +21,8 @@ class SwitchWrapper extends React.Component {
 
   render() {
     return (
-        <Switch
+        <Switch 
+          color={this.props.color}
           checked={this.state.checked}
           onChange={this.handleChange('checked')}
           value="checked"

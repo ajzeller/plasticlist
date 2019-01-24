@@ -28,11 +28,16 @@ const RefineItem = styled.div`
 
 const DialogInner = styled.div`
     margin: 10px;
+    /* max-width: 50vw; */
 `
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
   }
+
+const DialogContainer = styled(Dialog)`
+    /* max-width: 50vw; */
+`
 
 class RefineDialog extends React.Component {
     constructor(props) {
@@ -55,22 +60,23 @@ class RefineDialog extends React.Component {
 
         return (
 
-            <Dialog 
+            <DialogContainer
                 onClose={this.handleClose} 
                 aria-labelledby="simple-dialog-title" 
                 TransitionComponent={Transition}
                 fullScreen
+                maxWidth="sm"
                 {...other} >
-            <DialogInner>
-                <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
-                    <CloseIcon />
-                </IconButton>
-                <RefineItem>
-                    No Foreign TX Fees <SwitchWrapper onToggle={this.handleToggle} />
-                </RefineItem>
+                <DialogInner>
+                    <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
+                        <CloseIcon />
+                    </IconButton>
+                    <RefineItem>
+                        No Foreign Transaction Fees <SwitchWrapper color="primary" onToggle={this.handleToggle} />
+                    </RefineItem>
 
-            </DialogInner>
-            </Dialog>
+                </DialogInner>
+            </DialogContainer>
         )
     }
 
