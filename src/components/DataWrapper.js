@@ -10,6 +10,7 @@ import SEO from '../components/seo'
 import GridWrapper from '../components/GridWrapper'
 import RefineMenuWrapper from '../components/RefineMenuWrapper'
 
+
 const MainContainer = styled.div`
     max-width: 1000px;
     margin: auto;
@@ -30,6 +31,7 @@ class DataWrapper extends React.Component {
           <MainContainer>
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
             <RefineMenuWrapper />
+            
             <GridWrapper data={this.state.data}></GridWrapper>
             {this.props.children}
           </MainContainer>

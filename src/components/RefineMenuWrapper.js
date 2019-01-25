@@ -36,8 +36,8 @@ const styles = theme => ({
 const RefineMenuContainer = styled.div`
     background-color: ${theme.greyPanelBackground};
     border: 1px solid ${theme.greyBorderLight};
-    border-radius: 0.5rem;
-    margin: 5px 5px;
+    border-radius: 0rem;
+    margin: 0px 0px;
     padding: 0px 0px;
     max-width: 1000px;
     display: grid;
@@ -60,7 +60,10 @@ const dropdownStyle = {
 }
 
 const FilledInputStyled = styled(FilledInput)`
-    border-radius: 0.5rem;
+    && {
+        border-radius: 0rem;
+    }
+    /* border-top-left-radius: 0px; */
     
     
 `
