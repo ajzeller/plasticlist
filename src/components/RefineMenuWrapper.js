@@ -128,9 +128,10 @@ class RefineMenuWrapper extends React.Component {
                         <MenuItem value="">
                         <em>None</em>
                         </MenuItem>
-                        <MenuItem value={10}>PlasticRank</MenuItem>
-                        <MenuItem value={20}>Bonus Value</MenuItem>
-                        <MenuItem value={30}>Lowest Required Spending</MenuItem>
+                        <MenuItem value={"PlasticRank"}>PlasticRank</MenuItem>
+                        <MenuItem value={"BonusValue"}>Bonus Value</MenuItem>
+                        <MenuItem value={"LowestAnnualFee"}>Lowest Annual Fee</MenuItem>
+                        <MenuItem value={"LowestRequiredSpending"}>Lowest Required Spending</MenuItem>
                     </Select>
                 </FormControl>
 

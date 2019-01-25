@@ -28,7 +28,7 @@ const SecondPage = () => (
     <h1>Hi from the second page</h1>
     <p>Welcome to page 2</p>
     {/* <Slider /> */}
-    {/* <Range min={0} max={2000} defaultValue={[250, 1500]} marks={{ 0:0, 250: '', 500: 500, 750: 750, 1000: 1000, 1250: 1250, 1500: 1500, 1750: 1750, 2000: 2000 }} tipFormatter={value => `${value}%`} step={null} /> */}
+    <Range min={0} max={2000} defaultValue={[250, 1500]} marks={{ 0:0, 250: '', 500: 500, 750: 750, 1000: 1000, 1250: 1250, 1500: 1500, 1750: 1750, 2000: 2000 }} tipFormatter={value => `${value}%`} step={null} />
     <br />
     <br />
     <FilterWrapper>

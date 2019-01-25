@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
+import { Range } from 'rc-slider'
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -24,11 +25,16 @@ const RefineItem = styled.div`
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
+    margin: 10px 0 0 0;
 `
 
 const DialogInner = styled.div`
     margin: 10px;
     /* max-width: 50vw; */
+`
+
+const SliderContainer = styled.div`
+    margin: 10px 10px 40px 10px;
 `
 
 function Transition(props) {
@@ -74,6 +80,66 @@ class RefineDialog extends React.Component {
                     <RefineItem>
                         No Foreign Transaction Fees <SwitchWrapper color="primary" onToggle={this.handleToggle} />
                     </RefineItem>
+                    <RefineItem>
+                        Bonus Value
+                        <SliderContainer>
+                            <Range 
+                                min={0} 
+                                max={2000} 
+                                defaultValue={[250, 1500]} 
+                                marks={{ 0:0, 250: '', 500: 500, 750: '', 1000: 1000, 1250: '', 1500: 1500, 1750: '', 2000: 2000 }} 
+                                tipFormatter={value => `${value}%`} 
+                                step={null} 
+                                trackStyle={[ { backgroundColor: theme.primary }]}
+                                railStyle={[ { backgroundColor: theme.primary }]}
+                                // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
+
+
+                            />
+                        </SliderContainer>
+
+                    </RefineItem>
+
+                    <RefineItem>
+                        Annual Fee
+                        <SliderContainer>
+                            <Range 
+                                min={0} 
+                                max={1000} 
+                                defaultValue={[0, 1000]} 
+                                marks={{ 0:0, 250: 250, 500: 500, 750: 750, 1000: 1000 }} 
+                                tipFormatter={value => `${value}%`} 
+                                step={null} 
+                                trackStyle={[ { backgroundColor: theme.primary }]}
+                                railStyle={[ { backgroundColor: theme.primary }]}
+                                // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
+
+
+                            />
+                        </SliderContainer>
+
+                    </RefineItem>
+
+                    <RefineItem>
+                        Minimum Required Spending
+                        <SliderContainer>
+                            <Range 
+                                min={0} 
+                                max={10000} 
+                                defaultValue={[0, 10000]} 
+                                marks={{ 0:0 , 2500: "2.5k", 5000: "5k", 7500: "7.5k", 10000: "10k" }} 
+                                tipFormatter={value => `${value}%`} 
+                                step={null} 
+                                trackStyle={[ { backgroundColor: theme.primary }]}
+                                railStyle={[ { backgroundColor: theme.primary }]}
+                                // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
+
+
+                            />
+                        </SliderContainer>
+
+                    </RefineItem>
+                    
 
                 </DialogInner>
             </DialogContainer>

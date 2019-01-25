@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components'
+import Img from 'gatsby-image'
 import theme from '../layouts/theme'
 
 import SwipeableDrawer from '@material-ui/core/SwipeableDrawer';
@@ -18,6 +19,7 @@ import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
 import CardIcon from '@material-ui/icons/CreditCard'
 import InfoIcon from '@material-ui/icons/Info'
+import LogoBlue from '../images/plastic-list-logo-blue.svg'
 
 
 const styles = {
@@ -42,6 +44,10 @@ const IconButtonWrapper = styled.div`
   /* background-color: ${theme.greyBorderDark}; */
 `
 
+const LogoImage = styled.img`
+    max-width: 100px;
+`
+
 class SwipeableTemporaryDrawer extends React.Component {
   state = {
     top: false,
@@ -62,6 +68,7 @@ class SwipeableTemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
+            <ListItem><LogoImage src={LogoBlue} /></ListItem>
             <ListItem button key="cards">
               <ListItemIcon><CardIcon /></ListItemIcon>
               <ListItemText primary="Cards" />
