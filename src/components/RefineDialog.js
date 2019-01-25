@@ -21,6 +21,8 @@ import styled, {ThemeProvider} from 'styled-components'
 import theme from '../layouts/theme'
 import media from '../layouts/media'
 
+import 'rc-slider/assets/index.css'
+
 const RefineItem = styled.div`
     text-transform: uppercase;
     font-size: 12px;
