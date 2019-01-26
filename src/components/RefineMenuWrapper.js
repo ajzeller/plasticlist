@@ -7,6 +7,7 @@ import theme from '../layouts/theme'
 import media from '../layouts/media'
 import RefineDialog from '../components/RefineDialog';
 import TuneIcon from '@material-ui/icons/Tune'
+import SortIcon from '@material-ui/icons/Sort'
 
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
@@ -111,6 +112,7 @@ class RefineMenuWrapper extends React.Component {
                         }}
                         htmlFor="filled-age-simple"
                     >
+                        {/* <SortIcon /> */}
                         Sort By
                     </InputLabel>
                     <Select

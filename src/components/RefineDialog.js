@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Img from 'gatsby-image'
 import { withStyles } from '@material-ui/core/styles';
 import { Range } from 'rc-slider'
 import Button from '@material-ui/core/Button';
@@ -14,7 +15,12 @@ import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
-
+import VisaIcon from '../images/visa.svg'
+import MastercardIcon from '../images/mastercard.svg'
+import AmexIcon from '../images/amex.svg'
+import DiscoverIcon from '../images/discover.svg'
+import ToggleNetwork from '../components/ToggleNetwork';
+import SelectIssuer from '../components/SelectIssuer';
 
 
 import styled, {ThemeProvider} from 'styled-components'
@@ -22,6 +28,7 @@ import theme from '../layouts/theme'
 import media from '../layouts/media'
 
 import 'rc-slider/assets/index.css'
+import { Select } from 'antd';
 
 const RefineItem = styled.div`
     text-transform: uppercase;
@@ -31,12 +38,28 @@ const RefineItem = styled.div`
 `
 
 const DialogInner = styled.div`
-    margin: 10px;
+    padding: 10px;
     /* max-width: 50vw; */
 `
 
 const SliderContainer = styled.div`
-    margin: 10px 10px 40px 10px;
+    width: 100%;
+    margin: 10px 0px 40px 0px;
+    padding: 0 25px;
+`
+
+const CardBrandIcon = styled.img`
+    width: 50px;
+    margin: 0px;
+    box-shadow: ${theme.panelShadow};
+`
+
+const NetworkIconsContainer = styled.div`
+    display: grid;
+    grid-gap: 0px;
+    margin: 10px;
+    justify-items: center;
+    grid-template-columns: repeat(4, 1fr);
 `
 
 function Transition(props) {
@@ -79,6 +102,26 @@ class RefineDialog extends React.Component {
                     <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
                         <CloseIcon />
                     </IconButton>
+
+                    <RefineItem>
+                        Network
+
+                        <ToggleNetwork />
+
+                        {/* <NetworkIconsContainer>
+                            <CardBrandIcon src={VisaIcon} />
+                            <CardBrandIcon src={MastercardIcon} />
+                            <CardBrandIcon src={AmexIcon} />
+                            <CardBrandIcon src={DiscoverIcon} />
+                        </NetworkIconsContainer> */}
+
+                    </RefineItem>
+
+                    <RefineItem>
+                        Card Issuer
+                        <SelectIssuer />
+                    </RefineItem>
+
                     <RefineItem>
                         No Foreign Transaction Fees <SwitchWrapper color="primary" onToggle={this.handleToggle} />
                     </RefineItem>
@@ -89,7 +132,7 @@ class RefineDialog extends React.Component {
                                 min={0} 
                                 max={2000} 
                                 defaultValue={[250, 1500]} 
-                                marks={{ 0:0, 250: '', 500: 500, 750: '', 1000: 1000, 1250: '', 1500: 1500, 1750: '', 2000: 2000 }} 
+                                marks={{ 0:0, 250: '', 500: '$500', 750: '', 1000: "$1000", 1250: '', 1500: '$1500', 1750: '', 2000: '$2000' }} 
                                 tipFormatter={value => `${value}%`} 
                                 step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}

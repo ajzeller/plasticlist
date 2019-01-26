@@ -19,7 +19,9 @@ import MenuIcon from '@material-ui/icons/Menu'
 import HomeIcon from '@material-ui/icons/Home'
 import CardIcon from '@material-ui/icons/CreditCard'
 import InfoIcon from '@material-ui/icons/Info'
+import FormatLineSpacing from '@material-ui/icons/FormatLineSpacing'
 import LogoBlue from '../images/plastic-list-logo-blue.svg'
+
 
 
 const styles = {
@@ -68,11 +70,20 @@ class SwipeableTemporaryDrawer extends React.Component {
     const sideList = (
       <div className={classes.list}>
         <List>
+            
             <ListItem><LogoImage src={LogoBlue} /></ListItem>
+            
             <ListItem button key="cards">
-              <ListItemIcon><CardIcon /></ListItemIcon>
-              <ListItemText primary="Cards" />
+              <ListItemIcon><FormatLineSpacing /></ListItemIcon>
+                <ListItemText primary="Card List" />
             </ListItem>
+            
+            <ListItem button key="plasticmatch">
+              <ListItemIcon><CardIcon /></ListItemIcon>
+            <ListItemText primary="PlasticMatch" />
+            </ListItem>
+
+
             <ListItem button key="about">
               <ListItemIcon><InfoIcon /></ListItemIcon>
               <ListItemText primary="About" />
