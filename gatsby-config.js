@@ -20,18 +20,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Plastic List`,
+        short_name: `Plastic List`,
         start_url: `/`,
-        background_color: `#fff`,
+        background_color: `#117ACA`,
         theme_color: `#117ACA`,
-        display: `minimal-ui`,
+        display: `standalone`,
         icon: `src/images/plasticlist_logo.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.app/offline
-    // 'gatsby-plugin-offline',
+    'gatsby-plugin-offline',
 
     'gatsby-transformer-remark',
     {
