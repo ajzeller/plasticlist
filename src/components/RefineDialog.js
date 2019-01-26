@@ -25,14 +25,13 @@ import SelectIssuer from '../components/SelectIssuer';
 import SelectRewards from '../components/SelectRewards';
 import LogoBlue from '../images/plastic-list-logo-blue.svg'
 
-
-
 import styled, {ThemeProvider} from 'styled-components'
 import theme from '../layouts/theme'
 import media from '../layouts/media'
 
 import 'rc-slider/assets/index.css'
 import 'rc-tooltip/assets/bootstrap.css';
+import '../assets/sliderStyles.css'
 import Slider from 'rc-slider'
 import Tooltip from 'rc-tooltip';
 
