@@ -7,7 +7,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-antd',
-    `gatsby-plugin-favicon`,
+    // 'gatsby-plugin-favicon',
     {
       resolve: `gatsby-source-filesystem`,
       options: {
