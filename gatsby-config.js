@@ -26,7 +26,7 @@ module.exports = {
         background_color: `#117ACA`,
         theme_color: `#117ACA`,
         display: `standalone`,
-        icon: `src/images/plasticlist_logo.png`, // This path is relative to the root of the site.
+        icon: `src/favicon.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
