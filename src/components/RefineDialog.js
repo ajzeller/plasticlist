@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Img from 'gatsby-image'
 import { withStyles } from '@material-ui/core/styles';
-import { Range } from 'rc-slider'
+// import Slider , { Range } from 'rc-slider'
 import Button from '@material-ui/core/Button';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
@@ -32,7 +32,30 @@ import theme from '../layouts/theme'
 import media from '../layouts/media'
 
 import 'rc-slider/assets/index.css'
+import 'rc-tooltip/assets/bootstrap.css';
+import Slider from 'rc-slider'
+import Tooltip from 'rc-tooltip';
+
 import { Select } from 'antd';
+
+const createSliderWithTooltip = Slider.createSliderWithTooltip;
+const Range = createSliderWithTooltip(Slider.Range);
+const Handle = Slider.Handle;
+
+const handle = (props) => {
+    const { value, dragging, index, ...restProps } = props;
+    return (
+      <Tooltip
+        prefixCls="rc-slider-tooltip"
+        overlay={value}
+        visible={dragging}
+        placement="top"
+        key={index}
+      >
+        <Handle value={value} {...restProps} />
+      </Tooltip>
+    );
+  };
 
 const RefineItem = styled.div`
     text-transform: uppercase;
@@ -160,13 +183,13 @@ class RefineDialog extends React.Component {
                                 max={2000} 
                                 defaultValue={[0, 2000]} 
                                 marks={{ 0:0, 500: '$500', 1000: "$1k", 1500: '$1.5k', 2000: '$2k' }} 
-                                tipFormatter={value => `${value}%`} 
-                                // step={null} 
-                                trackStyle={[ { backgroundColor: theme.primary }]}
-                                railStyle={[ { backgroundColor: theme.primary }]}
-                                // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
-
-
+                                tipFormatter={value => `${value}`} 
+                                // step={null}
+                                trackStyle={[ { backgroundColor: theme.primary } , { borderColor: theme.primary } ]}
+                                activeDotStyle={[{ borderColor: theme.primary } , { borderColor: theme.primary }]}
+                                // railStyle={[ { backgroundColor: theme.primary } , { borderColor: theme.primary } ]}
+                                handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
+                                // handle={handle}
                             />
                         </SliderContainer>
 
@@ -180,10 +203,12 @@ class RefineDialog extends React.Component {
                                 max={1000} 
                                 defaultValue={[0, 1000]} 
                                 marks={{ 0:0, 250: '$250', 500: '$500', 750: '$750', 1000: '$1k' }} 
-                                tipFormatter={value => `${value}%`} 
+                                // tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
+                                handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
+
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
 
 
@@ -204,9 +229,7 @@ class RefineDialog extends React.Component {
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
-                                // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
-
-
+                                handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                             />
                         </SliderContainer>
 
@@ -224,9 +247,7 @@ class RefineDialog extends React.Component {
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
-                                // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
-
-
+                                handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                             />
                         </SliderContainer>
 
