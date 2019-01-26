@@ -5,8 +5,7 @@ import theme from '../layouts/theme'
 import { CcVisa, CcAmex, CcDiscover, CcMastercard } from 'styled-icons/fa-brands'
 import Visa from '../images/visa.svg'
 import media from '../layouts/media'
-
-
+import BusinessIcon from '@material-ui/icons/BusinessCenter';
 
 const panelBackgroundColor = (props) => {
     return props.theme[props.cardColor]
@@ -107,6 +106,12 @@ const NetworkBrand = styled.div`
     align-self: flex-end;
     /* justify-self: right; */
 `
+
+const ContainerBottomRight = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+`
+
 const ContainerCardLowerLeft = styled.div`
     display: grid;
     grid-template-columns: 1fr;
@@ -130,6 +135,13 @@ const AnnualFee = styled.div`
     border-radius: 0.4rem;
 `
 
+const CardType = styled.svg`
+        height: 15px;
+        width: 15px;
+        color: ${theme.greyBorderLight};
+        /* vertical-align: middle; */
+`
+
 class CardPanel extends React.Component {
     constructor(props){
         super(props)
@@ -143,7 +155,8 @@ class CardPanel extends React.Component {
             <Panel cardColor = {this.props.cardColor}>
             <CardUpper >
                 <CardRank>{this.props.cardRank}</CardRank>
-                <CardIssuer>{this.props.cardIssuer}</CardIssuer>
+                
+                <CardIssuer>  <span>  {this.props.cardIssuer} </span></CardIssuer>
             </CardUpper>
 
                 <CardName><span>{this.props.cardName}</span></CardName>
@@ -165,13 +178,19 @@ class CardPanel extends React.Component {
                     <AnnualFee>
                      ${this.props.annualFee}<Label>/yr</Label>
                     </AnnualFee>
+
+                    <ContainerBottomRight>
+                        <CardType>{this.props.cardType == 'Business' && <BusinessIcon /> } </CardType>
+
+                        <NetworkBrand>
+                            {this.props.network == 'VISA' && <CcVisa /> }
+                            {this.props.network == 'AMEX' && <CcAmex/> }
+                            {this.props.network == 'MasterCard' && <CcMastercard/> }
+                            {this.props.network == 'Discover' && <CcDiscover/> }
+                        </NetworkBrand> 
                     
-                    <NetworkBrand>
-                        {this.props.network == 'VISA' && <CcVisa /> }
-                        {this.props.network == 'AMEX' && <CcAmex/> }
-                        {this.props.network == 'MasterCard' && <CcMastercard/> }
-                        {this.props.network == 'Discover' && <CcDiscover/> }
-                    </NetworkBrand> 
+                    </ContainerBottomRight>
+                
                 </ContainerCardLowerRight>
 
             </CardLower>

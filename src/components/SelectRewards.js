@@ -5,24 +5,24 @@ import media from '../layouts/media'
 
 import Select from 'react-select';
 
-import { IssuerOptions } from '../data/Options'
+import { RewardsOptions } from '../data/Options'
 
-const SelectIssuerContainer = styled.div`
+const SelectRewardsContainer = styled.div`
     margin: 10px 0 0 0;
 `
 
- const SelectIssuer = () => (
+ const SelectRewards = () => (
      
-    <SelectIssuerContainer>
+    <SelectRewardsContainer>
         <Select
         //   defaultValue={[IssuerOptions[0], IssuerOptions[1]]}
           isMulti
           name="colors"
-          options={IssuerOptions}
+          options={RewardsOptions}
           className="basic-multi-select"
           classNamePrefix="select"
         />
-    </SelectIssuerContainer>
+    </SelectRewardsContainer>
   );
 
-  export default SelectIssuer
+  export default SelectRewards

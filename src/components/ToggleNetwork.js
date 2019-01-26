@@ -22,7 +22,7 @@ const CardBrandIcon = styled.img`
 const NetworkIconsContainer = styled.div`
     display: grid;
     grid-gap: 0px;
-    margin: 10px;
+    margin: 10px 10px 10px 10px;
     justify-items: center;
     grid-template-columns: repeat(4, 1fr);
 `

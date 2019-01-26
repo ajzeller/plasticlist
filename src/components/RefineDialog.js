@@ -15,12 +15,16 @@ import renderEmpty from 'antd/lib/config-provider/renderEmpty';
 import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import VisaIcon from '../images/visa.svg'
 import MastercardIcon from '../images/mastercard.svg'
 import AmexIcon from '../images/amex.svg'
 import DiscoverIcon from '../images/discover.svg'
 import ToggleNetwork from '../components/ToggleNetwork';
 import SelectIssuer from '../components/SelectIssuer';
+import SelectRewards from '../components/SelectRewards';
+import LogoBlue from '../images/plastic-list-logo-blue.svg'
+
 
 
 import styled, {ThemeProvider} from 'styled-components'
@@ -34,12 +38,18 @@ const RefineItem = styled.div`
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
-    margin: 10px 0 0 0;
+    margin: 0px 0 30px 0;
+    padding: 0 0 0px 0;
+`
+
+const RefineItemSwitch = styled(RefineItem)`
+    margin: 0px 0 10px 0;
+
 `
 
 const DialogInner = styled.div`
     padding: 10px;
-    /* max-width: 50vw; */
+    /* margin: 0px auto; */
 `
 
 const SliderContainer = styled.div`
@@ -62,12 +72,29 @@ const NetworkIconsContainer = styled.div`
     grid-template-columns: repeat(4, 1fr);
 `
 
+const DialogHeader = styled.div`
+    display: grid;
+    grid-template-columns: 9fr 1fr;
+    justify-items: flex-start;
+    align-items: center;
+    margin: 0 0 10px 0;
+`
+
 function Transition(props) {
     return <Slide direction="up" {...props} />;
   }
 
 const DialogContainer = styled(Dialog)`
     /* max-width: 50vw; */
+`
+
+const IconButtonClose = styled(IconButton)`
+    text-align: right;
+`
+
+const LogoImage = styled.img`
+    height: 35px;
+    margin: 0;
 `
 
 class RefineDialog extends React.Component {
@@ -99,9 +126,12 @@ class RefineDialog extends React.Component {
                 maxWidth="sm"
                 {...other} >
                 <DialogInner>
-                    <IconButton color="inherit" onClick={this.handleClose} aria-label="Close">
-                        <CloseIcon />
-                    </IconButton>
+                    <DialogHeader>
+                        <LogoImage src={LogoBlue} />
+                        <IconButtonClose color="inherit" onClick={this.handleClose} aria-label="Close">
+                            <ExpandMoreIcon />
+                        </IconButtonClose>
+                    </DialogHeader>
 
                     <RefineItem>
                         Network
@@ -123,18 +153,15 @@ class RefineDialog extends React.Component {
                     </RefineItem>
 
                     <RefineItem>
-                        No Foreign Transaction Fees <SwitchWrapper color="primary" onToggle={this.handleToggle} />
-                    </RefineItem>
-                    <RefineItem>
                         Bonus Value
                         <SliderContainer>
                             <Range 
                                 min={0} 
                                 max={2000} 
-                                defaultValue={[250, 1500]} 
-                                marks={{ 0:0, 250: '', 500: '$500', 750: '', 1000: "$1000", 1250: '', 1500: '$1500', 1750: '', 2000: '$2000' }} 
+                                defaultValue={[0, 2000]} 
+                                marks={{ 0:0, 500: '$500', 1000: "$1k", 1500: '$1.5k', 2000: '$2k' }} 
                                 tipFormatter={value => `${value}%`} 
-                                step={null} 
+                                // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
@@ -152,9 +179,9 @@ class RefineDialog extends React.Component {
                                 min={0} 
                                 max={1000} 
                                 defaultValue={[0, 1000]} 
-                                marks={{ 0:0, 250: 250, 500: 500, 750: 750, 1000: 1000 }} 
+                                marks={{ 0:0, 250: '$250', 500: '$500', 750: '$750', 1000: '$1k' }} 
                                 tipFormatter={value => `${value}%`} 
-                                step={null} 
+                                // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
@@ -174,7 +201,27 @@ class RefineDialog extends React.Component {
                                 defaultValue={[0, 10000]} 
                                 marks={{ 0:0 , 2500: "2.5k", 5000: "5k", 7500: "7.5k", 10000: "10k" }} 
                                 tipFormatter={value => `${value}%`} 
-                                step={null} 
+                                // step={null} 
+                                trackStyle={[ { backgroundColor: theme.primary }]}
+                                railStyle={[ { backgroundColor: theme.primary }]}
+                                // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
+
+
+                            />
+                        </SliderContainer>
+
+                    </RefineItem>
+
+                    <RefineItem>
+                        Cash Back
+                        <SliderContainer>
+                            <Range 
+                                min={0} 
+                                max={10} 
+                                defaultValue={[0, 10]} 
+                                marks={{ 0:0 , 2: "2%", 4: "4%", 6: "6%", 8: "8%", 10: '10%' }} 
+                                tipFormatter={value => `${value}%`} 
+                                // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
@@ -185,7 +232,14 @@ class RefineDialog extends React.Component {
 
                     </RefineItem>
                     
+                    <RefineItemSwitch>
+                        No Foreign Transaction Fees <SwitchWrapper color="primary" onToggle={this.handleToggle} />
+                    </RefineItemSwitch>
 
+                    <RefineItem>
+                        Rewards Program
+                        <SelectRewards />
+                    </RefineItem>
                 </DialogInner>
             </DialogContainer>
         )

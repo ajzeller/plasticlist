@@ -36,7 +36,7 @@ const Container = styled.div`
 const IndexPage = ({ data }) => (
     <Layout>
       <DataWrapper data={data} />
-      <Link to="/page-2">Go to page 2</Link>
+      {/* <Link to="/page-2">Go to page 2</Link> */}
 
 
       {/* <Layout>

@@ -29,6 +29,17 @@ const theme = {
     amexPlatinum:'linear-gradient(#636364, #4E4E4E)',
     capitalOneSparkBiz: 'linear-gradient(#D9261C, #B71F16)',
 
+    // rewards program colors
+
+    ultimateRewards: '#0062AC',
+    amexRewards: '#4E4E4E',
+    citiRewards: '#D9261C',
+    discoverRewards: '#F9A021',
+    alaskaRewards: '#AACF72',
+    americanRewards: '#D91C22',
+    deltaRewards: '#DB162D',
+    unitedRewards: '#1D67B1',
+    rewardsDefault: '#117ACA',
 
 
     // fonts

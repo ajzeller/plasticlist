@@ -52,6 +52,8 @@ class GridWrapper extends React.Component {
             bonusValue={edge.node.data.bonus_value}
             cardRank={i + 1}
             annualFee={edge.node.data.annual_fee_after_first_year}
+            cardType={edge.node.data.card_type}
+
           />
         ))}
       </GridContainer>

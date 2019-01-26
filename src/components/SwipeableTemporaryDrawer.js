@@ -21,7 +21,7 @@ import CardIcon from '@material-ui/icons/CreditCard'
 import InfoIcon from '@material-ui/icons/Info'
 import FormatLineSpacing from '@material-ui/icons/FormatLineSpacing'
 import LogoBlue from '../images/plastic-list-logo-blue.svg'
-
+import CardGiftcardIcon from '@material-ui/icons/CardGiftcard'
 
 
 const styles = {
@@ -83,6 +83,10 @@ class SwipeableTemporaryDrawer extends React.Component {
             <ListItemText primary="PlasticMatch" />
             </ListItem>
 
+            <ListItem button key="rewards">
+              <ListItemIcon><CardGiftcardIcon /></ListItemIcon>
+            <ListItemText primary="Rewards Programs" />
+            </ListItem>
 
             <ListItem button key="about">
               <ListItemIcon><InfoIcon /></ListItemIcon>

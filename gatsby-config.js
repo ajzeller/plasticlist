@@ -7,6 +7,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     'gatsby-plugin-antd',
+    `gatsby-plugin-favicon`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -22,10 +23,10 @@ module.exports = {
         name: `gatsby-starter-default`,
         short_name: `starter`,
         start_url: `/`,
-        background_color: `#4A4A4A`,
-        theme_color: `#4A4A4A`,
+        background_color: `#fff`,
+        theme_color: `#117ACA`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/plasticlist_logo.png`, // This path is relative to the root of the site.
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
