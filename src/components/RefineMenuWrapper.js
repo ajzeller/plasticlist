@@ -40,11 +40,16 @@ const RefineMenuContainer = styled.div`
     border-radius: 0rem;
     margin: 0px 0px;
     padding: 0px 0px;
-    max-width: 1000px;
+    width: 100vw;
+`
+
+const RefineMenuContainerInner = styled.div`
     display: grid;
     justify-items: right;
     align-items: center;
     grid-template-columns: 100px 1fr;
+    max-width: 1000px;
+    margin: auto;
 `
 
 const RefineButton = styled(Button)`
@@ -74,7 +79,6 @@ class RefineMenuWrapper extends React.Component {
         super(props)
         this.state = {
             open: false,
-            age: '',
             name: 'hai',
             labelWidth: 0,
         }
@@ -100,47 +104,50 @@ class RefineMenuWrapper extends React.Component {
 
         return (
             <RefineMenuContainer>
-                <Button onClick={() => this.handleSettingsClick()}>
-                    <RefineIcon />
-                        Filter
-                    </Button>
-
-                <FormControl variant="filled" className={classes.formControl} style={dropdownStyle} >
-                    <InputLabel
-                        ref={ref => {
-                        this.InputLabelRef = ref;
-                        }}
-                        htmlFor="filled-age-simple"
-                    >
-                        {/* <SortIcon /> */}
-                        Sort By
-                    </InputLabel>
-                    <Select
-                        value={this.state.age}
-                        onChange={this.handleChange}
-                        input={
-                        <FilledInputStyled
-                            disableUnderline={true} 
-                            labelWidth={this.state.labelWidth}
-                            name="age"
-                            id="filled-age-simple"
-                        />
-                        }
-                    >
-                        <MenuItem value="">
-                        <em>None</em>
-                        </MenuItem>
-                        <MenuItem value={"PlasticRank"}>PlasticRank</MenuItem>
-                        <MenuItem value={"BonusValue"}>Bonus Value</MenuItem>
-                        <MenuItem value={"LowestAnnualFee"}>Lowest Annual Fee</MenuItem>
-                        <MenuItem value={"LowestRequiredSpending"}>Lowest Required Spending</MenuItem>
-                    </Select>
-                </FormControl>
-
-                <RefineDialog 
-                    open={this.state.open}
-                    onClose={this.handleClose}
-                />
+                <RefineMenuContainerInner>
+                    <Button onClick={() => this.handleSettingsClick()}>
+                        <RefineIcon />
+                            Filter
+                        </Button>
+    
+                    <FormControl variant="filled" className={classes.formControl} style={dropdownStyle} >
+                        <InputLabel
+                            ref={ref => {
+                            this.InputLabelRef = ref;
+                            }}
+                            htmlFor="filled-age-simple"
+                        >
+                            {/* <SortIcon /> */}
+                            Sort By
+                        </InputLabel>
+                        <Select
+                            value={this.props.sortBy}
+                            // value={this.state.sortBy}
+                            onChange={this.props.handleChange}
+                            input={
+                            <FilledInputStyled
+                                disableUnderline={true} 
+                                labelWidth={this.state.labelWidth}
+                                name="sortBy"
+                                id="filled-age-simple"
+                            />
+                            }
+                        >
+                            {/* <MenuItem value="">
+                            <em>None</em>
+                            </MenuItem> */}
+                            <MenuItem value={"plasticScoreNormalized"}>PlasticScore</MenuItem>
+                            <MenuItem value={"bonusValue"}>Bonus Value</MenuItem>
+                            <MenuItem value={"annualFeeAfterFirstYear"}>Lowest Annual Fee</MenuItem>
+                            <MenuItem value={"requiredSpend"}>Lowest Required Spending</MenuItem>
+                        </Select>
+                    </FormControl>
+    
+                    <RefineDialog 
+                        open={this.state.open}
+                        onClose={this.handleClose}
+                    />
+                </RefineMenuContainerInner>
             </RefineMenuContainer>
         )
     }

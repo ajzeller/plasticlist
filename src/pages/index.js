@@ -35,7 +35,7 @@ const Container = styled.div`
 
 const IndexPage = ({ data }) => (
     <Layout>
-      <DataWrapper data={data} />
+      <DataWrapper data={data.allAirtable.edges} />
       {/* <Link to="/page-2">Go to page 2</Link> */}
 
 
@@ -59,17 +59,18 @@ export const query = graphql`
       edges {
         node {
           data {
-            card_name
+            cardName
             network
-            card_issuer
-            color_primary
-            required_spend
-            bonus_value
-            required_spend_window_days
-            cash_back_percent
-            card_type
-            foreign_tx_fee_waived
-            annual_fee_after_first_year
+            cardIssuer
+            colorPrimary
+            requiredSpend
+            bonusValue
+            requiredSpendWindowDays
+            cashBackPercent
+            cardType
+            plasticScoreNormalized
+            foreignTxFeeWaived
+            annualFeeAfterFirstYear
           }
         }
       }

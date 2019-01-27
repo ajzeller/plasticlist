@@ -27,33 +27,31 @@ const GridContainer = styled.div`
 class GridWrapper extends React.Component {
   constructor(props) {
     super(props)
-    // this.setState = {
-
+    // this.state = {
     // }
   }
 
   render() {
+
+
     return (
       <GridContainer>
         {console.log('testing props')}
 
-        {console.log(this.props.data.allAirtable)}
+        {console.log(this.props.data)}
 
-
-
-        {this.props.data.allAirtable.edges.map((edge, i) => (
+        {this.props.data.map((edge, i) => (
           <CardPanel
-            cardName={edge.node.data.card_name}
-            cardIssuer={edge.node.data.card_issuer}
+            cardName={edge.node.data.cardName}
+            cardIssuer={edge.node.data.cardIssuer}
             network={edge.node.data.network}
-            cardColor={edge.node.data.color_primary}
-            requiredSpend={edge.node.data.required_spend}
-            requiredSpendWindow={edge.node.data.required_spend_window_days}
-            bonusValue={edge.node.data.bonus_value}
+            cardColor={edge.node.data.colorPrimary}
+            requiredSpend={edge.node.data.requiredSpend}
+            requiredSpendWindow={edge.node.data.requiredSpendWindowDays}
+            bonusValue={edge.node.data.bonusValue}
+            annualFee={edge.node.data.annualFeeAfterFirstYear}
+            cardType={edge.node.data.cardType}
             cardRank={i + 1}
-            annualFee={edge.node.data.annual_fee_after_first_year}
-            cardType={edge.node.data.card_type}
-
           />
         ))}
       </GridContainer>

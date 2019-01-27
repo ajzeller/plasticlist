@@ -185,8 +185,8 @@ class RefineDialog extends React.Component {
                                 tipFormatter={value => `${value}`} 
                                 // step={null}
                                 trackStyle={[ { backgroundColor: theme.primary } , { borderColor: theme.primary } ]}
-                                activeDotStyle={[{ borderColor: theme.primary } , { borderColor: theme.primary }]}
-                                // railStyle={[ { backgroundColor: theme.primary } , { borderColor: theme.primary } ]}
+                                // activeDotStyle={[{ borderColor: theme.primary } , { borderColor: theme.primary }]}
+                                railStyle={[ { backgroundColor: theme.primary } ]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 // handle={handle}
                             />
@@ -205,7 +205,7 @@ class RefineDialog extends React.Component {
                                 // tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
-                                railStyle={[ { backgroundColor: theme.primary }]}
+                                railStyle={[{ backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
 
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
@@ -268,7 +268,7 @@ class RefineDialog extends React.Component {
 }
 
 RefineDialog.propTypes = {
-    classes: PropTypes.object.isRequired,
+    // classes: PropTypes.object.isRequired,
     onClose: PropTypes.func,
     // onSwitchClose: PropTypes.func,
   };

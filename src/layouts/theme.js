@@ -28,6 +28,9 @@ const theme = {
     amexGold: 'linear-gradient(#E0CA7E,#C8A324)',
     amexPlatinum:'linear-gradient(#636364, #4E4E4E)',
     capitalOneSparkBiz: 'linear-gradient(#D9261C, #B71F16)',
+    southwest: 'linear-gradient(#182775, #202756)',
+    barclays: 'linear-gradient(#25A1DE, #0A539F)',
+    capitalOne: 'linear-gradient(#003053, #00162F)',
 
     // rewards program colors
 
