@@ -17,11 +17,19 @@ const GridContainer = styled.div`
     max-width: 1000px;
     padding: 5px 5px;
     display: grid;
-    grid-gap: 8px;
+    
+    /* grid-gap: 8px; */
+    ${media.giant`grid-gap: 15px;`}    
+    ${media.desktop`grid-gap: 15px;`}    
+    ${media.tablet`grid-gap: 15px;`}
+    ${media.phone`grid-gap: 8px;`}
+
     ${media.giant`grid-template-columns: 1fr 1fr 1fr 1fr;`}
     ${media.desktop`grid-template-columns: 1fr 1fr 1fr;`}
     ${media.tablet`grid-template-columns: 1fr 1fr;`}
     ${media.phone`grid-template-columns: 1fr 1fr;`}
+
+    justify-items: center;
 `
 
 class GridWrapper extends React.Component {

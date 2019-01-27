@@ -3,9 +3,13 @@ import { Link } from 'gatsby'
 import styled, { css }  from 'styled-components'
 import theme from '../layouts/theme'
 import { CcVisa, CcAmex, CcDiscover, CcMastercard } from 'styled-icons/fa-brands'
-import Visa from '../images/visa.svg'
-import media from '../layouts/media'
 import BusinessIcon from '@material-ui/icons/BusinessCenter';
+import Visa from '../images/visa.svg'
+import Mastercard from '../images/Mastercard_white.svg'
+import Discover from '../images/discover_white.svg'
+import Amex from '../images/amex.svg'
+
+import media from '../layouts/media'
 
 const panelBackgroundColor = (props) => {
     return props.theme[props.cardColor]
@@ -28,6 +32,9 @@ const Panel = styled.div`
     background-color: #F9A021;
     background-image: ${ props => panelBackgroundColor(props) };
     box-shadow: ${theme.panelShadow};
+
+    ${media.tablet`max-width: 190px;`}
+    ${media.phone`min-width: 100px;`}
 
     ${media.giant`font-size: 24px;`}
     ${media.desktop`font-size: 20px;`}
@@ -102,14 +109,20 @@ const ContainerBonus = styled.div`
 `
 
 const NetworkBrand = styled.div`
-    width: 20px;
+    width: 30px;
     align-self: flex-end;
     /* justify-self: right; */
 `
 
 const ContainerBottomRight = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    /* grid-template-columns: 1fr 40px; */
+
+    ${media.giant`grid-template-columns: 1fr 50px;`}
+    ${media.desktop`grid-template-columns: 1fr 50px;`}
+    ${media.tablet`grid-template-columns: 1fr 40px;`}
+    ${media.phone`grid-template-columns: 1fr 35px;`}
+    align-items: center;
 `
 
 const ContainerCardLowerLeft = styled.div`
@@ -140,6 +153,12 @@ const CardType = styled.svg`
         width: 15px;
         color: ${theme.greyBorderLight};
         /* vertical-align: middle; */
+`
+
+const NetWorkIcon = styled.img`
+    width: 90%;
+
+    margin: 2px auto 5px auto;
 `
 
 class CardPanel extends React.Component {
@@ -182,12 +201,12 @@ class CardPanel extends React.Component {
                     <ContainerBottomRight>
                         <CardType>{this.props.cardType == 'Business' && <BusinessIcon /> } </CardType>
 
-                        <NetworkBrand>
-                            {this.props.network == 'VISA' && <CcVisa /> }
-                            {this.props.network == 'AMEX' && <CcAmex/> }
-                            {this.props.network == 'MasterCard' && <CcMastercard/> }
-                            {this.props.network == 'Discover' && <CcDiscover/> }
-                        </NetworkBrand> 
+                        {/* <NetworkBrand> */}
+                            {this.props.network == 'VISA' && <NetWorkIcon src={Visa} /> }
+                            {this.props.network === 'AMEX' && <NetWorkIcon src={Amex} /> }
+                            {this.props.network === 'MasterCard' && <NetWorkIcon src={Mastercard} /> }
+                            {this.props.network === 'Discover' && <NetWorkIcon src={Discover} /> }
+                        {/* </NetworkBrand>  */}
                     
                     </ContainerBottomRight>
                 

@@ -140,6 +140,9 @@ class RefineDialog extends React.Component {
 
     render() {
             const { onClose, ...other } = this.props;
+            const mobile = window.innerWidth < 500
+            console.log(mobile)
+
 
         return (
 
@@ -147,10 +150,12 @@ class RefineDialog extends React.Component {
                 onClose={this.handleClose} 
                 aria-labelledby="simple-dialog-title" 
                 TransitionComponent={Transition}
-                fullScreen
+
+                // { mobile && fullScreen }
                 maxWidth="sm"
                 {...other} >
                 <DialogInner>
+                    
                     <DialogHeader>
                         <LogoImage src={LogoBlue} />
                         <IconButtonClose color="inherit" onClick={this.handleClose} aria-label="Close">
@@ -256,7 +261,7 @@ class RefineDialog extends React.Component {
                     </RefineItem>
                     
                     <RefineItemSwitch>
-                        No Foreign Transaction Fees <SwitchWrapper value="foreignTxFeeWaived" color="primary" onToggle={this.handleToggle} />
+                        No Foreign TX Fees <SwitchWrapper value="foreignTxFeeWaived" color="primary" onToggle={this.handleToggle} />
                     </RefineItemSwitch>
 
                     <RefineItemSwitch>
@@ -266,7 +271,7 @@ class RefineDialog extends React.Component {
                                 <InfoIcon />
                             </IconButton>
                         </Tooltip> */}
-                        <AdjustedAnnualFeeInfo />
+                        {/* <AdjustedAnnualFeeInfo /> */}
                     </RefineItemSwitch>
 
                     <RefineItem>

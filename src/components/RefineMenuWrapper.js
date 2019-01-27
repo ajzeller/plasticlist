@@ -48,7 +48,7 @@ const RefineMenuContainerInner = styled.div`
     justify-items: right;
     align-items: center;
     grid-template-columns: 100px 1fr;
-    max-width: 1000px;
+    max-width: 400px;
     margin: auto;
 `
 
