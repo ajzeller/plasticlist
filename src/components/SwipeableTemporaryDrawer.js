@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'gatsby'
 import { withStyles } from '@material-ui/core/styles';
 import styled from 'styled-components'
 import Img from 'gatsby-image'
@@ -73,15 +74,19 @@ class SwipeableTemporaryDrawer extends React.Component {
             
             <ListItem><LogoImage src={LogoBlue} /></ListItem>
             
-            <ListItem button key="cards">
-              <ListItemIcon><FormatLineSpacing /></ListItemIcon>
-                <ListItemText primary="Card List" />
-            </ListItem>
+            <Link to='/'>
+              <ListItem button key="cards">
+                  <ListItemIcon><FormatLineSpacing /></ListItemIcon>
+                    <ListItemText primary="Card List" />
+              </ListItem>
+            </Link>
             
-            <ListItem button key="plasticmatch">
-              <ListItemIcon><CardIcon /></ListItemIcon>
-            <ListItemText primary="PlasticMatch" />
-            </ListItem>
+            <Link to='/plasticmatch'>
+              <ListItem button key="plasticmatch">
+                <ListItemIcon><CardIcon /></ListItemIcon>
+              <ListItemText primary="PlasticMatch" />
+              </ListItem>
+              </Link>
 
             <ListItem button key="rewards">
               <ListItemIcon><CardGiftcardIcon /></ListItemIcon>

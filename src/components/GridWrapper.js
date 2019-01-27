@@ -14,7 +14,6 @@ const panelStyle = {
 
 const GridContainer = styled.div`
     margin: auto auto 20px auto;
-    padding: 10px 10px;
     display: grid;
     
     /* grid-gap: 8px; */
@@ -26,16 +25,19 @@ const GridContainer = styled.div`
     ${media.panelColumns7`
       grid-template-columns: repeat(6,1fr);
       max-width: 1600px;
+      padding: 10px;
       grid-gap: 10px;
     `}
 
     ${media.panelColumns6`
       grid-template-columns: repeat(5,1fr);
+      padding: 10px;
       grid-gap: 10px;
     `}
 
     ${media.panelColumns5`
       grid-template-columns: repeat(5,1fr);
+      padding: 10px;
       grid-gap: 10px;
     `}
 
@@ -47,11 +49,13 @@ const GridContainer = styled.div`
     ${media.panelColumns3`
       grid-template-columns: repeat(3,1fr);
       grid-gap: 10px;
+      padding: 10px;
     `}
 
     ${media.panelColumns2`
       grid-template-columns: repeat(2,1fr);
-      grid-gap: 10px;
+      grid-gap: 8px;
+      padding: 8px;
     `}
 /* 
 
@@ -110,6 +114,7 @@ class GridWrapper extends React.Component {
             annualFee={edge.node.data.annualFeeAfterFirstYear}
             cardType={edge.node.data.cardType}
             cardRank={i + 1}
+            cardDescription={edge.node.data.perks}
           />
         ))}
       </GridContainer>

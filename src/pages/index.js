@@ -71,6 +71,7 @@ export const query = graphql`
             plasticScoreNormalized
             foreignTxFeeWaived
             annualFeeAfterFirstYear
+            perks
           }
         }
       }

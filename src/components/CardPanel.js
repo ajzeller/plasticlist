@@ -8,6 +8,7 @@ import Visa from '../images/visa.svg'
 import Mastercard from '../images/Mastercard_white.svg'
 import Discover from '../images/discover_white.svg'
 import Amex from '../images/amex.svg'
+import CardDialog from '../components/CardDialog'
 
 import media from '../layouts/media'
 
@@ -30,17 +31,17 @@ const Panel = styled.div`
     /* text-shadow: ${theme.panelTextShadow}; */
 
     /* color: ${ props => (props.cardColor  === 'amexGold' && props.theme.amexGold) }; */
-    background-color: #F9A021;
+    background-color: none;
     background-image: ${ props => panelBackgroundColor(props) };
     box-shadow: ${theme.panelShadow};
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
 
-    /* ${media.tablet`max-width: 190px;`} */
-    /* ${media.phone`width: 100%;`} */
+    &:hover {
+        box-shadow: ${theme.panelShadowHover};
+        transform: scale(1.02);
 
-    /* ${media.giant`font-size: 24px;`} */
-    /* ${media.desktop`font-size: 20px;`} */
-    /* ${media.tablet`font-size: 18px;`} */
-    /* ${media.phone`font-size: 16px;`} */
+    }
 
     ${media.panelColumns7`
         font-size: 24px;
@@ -69,10 +70,11 @@ const Panel = styled.div`
 
     ${media.panelColumns2`
         font-size: 16px;
-        min-height: 125px;
+        min-height: 110px;
     `}
+`
 
-
+const PanelContainer = styled.div`
 `
 
 const CardUpper = styled.div`
@@ -96,6 +98,8 @@ const CardRank = styled.div`
      /* text-decoration: underline; */
     /* border-bottom: 4px solid ${theme.white}; */
     justify-self: left;
+    font-size: 0.8em;
+
 `
 
 const CardIssuer = styled.div`
@@ -197,59 +201,85 @@ const NetWorkIcon = styled.img`
 class CardPanel extends React.Component {
     constructor(props){
         super(props)
-        // this.setState(
-
-        // )
+        this.state = {
+            open: false,
+        }
     }
+
+    handlePanelClick() {
+        this.setState({
+          open: !this.state.open,
+        })
+      }
+    
+      handleClose = value => {
+        this.setState({ open: false });
+      };
 
     render(){
         return(
-            <Panel cardColor = {this.props.cardColor}>
-            <CardUpper >
-                <CardRank>{this.props.cardRank}</CardRank>
-                
-                <CardIssuer>  <span>  {this.props.cardIssuer} </span></CardIssuer>
-            </CardUpper>
 
-                <CardName><span>{this.props.cardName}</span></CardName>
-
-            <CardLower >
-                <ContainerCardLowerLeft>
-                    <ContainerSpend>
-                            <Label>Spend</Label> ${this.props.requiredSpend/1000}k                        
-                    </ContainerSpend>
-
-                    <ContainerBonus>
-                        <Label>Bonus Value</Label> ${this.props.bonusValue}
-
-                    </ContainerBonus>
-
-                </ContainerCardLowerLeft>
-                
-                <ContainerCardLowerRight>
-                    <AnnualFee>
-                     ${this.props.annualFee}<Label>/yr</Label>
-                    </AnnualFee>
-
-                    <ContainerBottomRight>
-                        <CardType>{this.props.cardType == 'Business' && <BusinessIcon /> } </CardType>
-
-                        {/* <NetworkBrand> */}
-                            {this.props.network == 'VISA' && <NetWorkIcon src={Visa} /> }
-                            {this.props.network === 'AMEX' && <NetWorkIcon src={Amex} /> }
-                            {this.props.network === 'MasterCard' && <NetWorkIcon src={Mastercard} /> }
-                            {this.props.network === 'Discover' && <NetWorkIcon src={Discover} /> }
-                        {/* </NetworkBrand>  */}
+            <Panel cardColor = {this.props.cardColor} onClick={() => this.handlePanelClick()}>
+                <CardUpper >
+                    <CardRank>{this.props.cardRank}</CardRank>
                     
-                    </ContainerBottomRight>
-                
-                </ContainerCardLowerRight>
+                    <CardIssuer>  <span>  {this.props.cardIssuer} </span></CardIssuer>
+                </CardUpper>
 
-            </CardLower>
-                
+                    <CardName><span>{this.props.cardName}</span></CardName>
+
+                <CardLower >
+                    <ContainerCardLowerLeft>
+                        <ContainerSpend>
+                                <Label>Spend</Label> ${this.props.requiredSpend/1000}k                        
+                        </ContainerSpend>
+
+                        <ContainerBonus>
+                            <Label>Bonus Value</Label> ${this.props.bonusValue}
+
+                        </ContainerBonus>
+
+                    </ContainerCardLowerLeft>
+                    
+                    <ContainerCardLowerRight>
+                        <AnnualFee>
+                        ${this.props.annualFee}<Label>/yr</Label>
+                        </AnnualFee>
+
+                        <ContainerBottomRight>
+                            <CardType>{this.props.cardType == 'Business' && <BusinessIcon /> } </CardType>
+
+                            {/* <NetworkBrand> */}
+                                {this.props.network == 'VISA' && <NetWorkIcon src={Visa} /> }
+                                {this.props.network === 'AMEX' && <NetWorkIcon src={Amex} /> }
+                                {this.props.network === 'MasterCard' && <NetWorkIcon src={Mastercard} /> }
+                                {this.props.network === 'Discover' && <NetWorkIcon src={Discover} /> }
+                            {/* </NetworkBrand>  */}
+                        
+                        </ContainerBottomRight>
+                    
+                    </ContainerCardLowerRight>
+
+                </CardLower>
+
+                <CardDialog 
+                    open={this.state.open}
+                    onClose={this.handleClose} 
+                    cardName={this.props.cardName}
+                    cardIssuer={this.props.cardIssuer}
+                    network={this.props.network}
+                    cardColor={this.props.cardColor}
+                    requiredSpend={this.props.requiredSpend}
+                    requiredSpendWindow={this.props.requiredSpendWindow}
+                    bonusValue={this.props.bonusValue}
+                    annualFee={this.props.annualFee}
+                    cardType={this.props.cardType}
+                    cardRank={this.props.cardRank}
+                    cardDescription={this.props.cardDescription}
+                />
             </Panel>
 
-            // <Panel />
+
         )
     }
 }

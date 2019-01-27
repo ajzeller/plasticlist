@@ -62,6 +62,10 @@ class DataWrapper extends React.Component {
     )
   }
 
+  componentDidMount() {
+    this.sortBy(this.state.sortBy) // sorts grid by default sorting parameter on first paint
+  }
+
   render() {
 
 

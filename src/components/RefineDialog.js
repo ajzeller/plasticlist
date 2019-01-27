@@ -151,13 +151,13 @@ class RefineDialog extends React.Component {
 
             <DialogContainer
                 onClose={this.handleClose} 
-                aria-labelledby="simple-dialog-title" 
+                aria-labelledby="RefineDialog" 
                 TransitionComponent={Transition}
 
                 // { mobile && fullScreen }
                 fullScreen={fullScreen}
                 // contentStyle={{width: "100%", maxWidth: "none"}}
-                maxWidth="sm"
+                // maxWidth="sm"
                 {...other} >
                 <DialogInner>
                     

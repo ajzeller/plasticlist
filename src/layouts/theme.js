@@ -31,6 +31,14 @@ const theme = {
     southwest: 'linear-gradient(#182775, #202756)',
     barclays: 'linear-gradient(#25A1DE, #0A539F)',
     capitalOne: 'linear-gradient(#003053, #00162F)',
+    capitalOneQuicksilver: 'linear-gradient(#787C7D, #2F3334)',
+    chaseFreedom: 'linear-gradient(#33BAE5, #212253)',
+    chaseFreedomUnlimited: 'linear-gradient(#0B71B7, #7AB947)',
+    amexBlue: 'linear-gradient(#5E82A0, #252888)',
+    amexPropel: 'linear-gradient(#D91F37, #8B1841)',
+    capitalOneSavor: 'linear-gradient(#E9A97E, #B6603D)',
+    
+
 
     // rewards program colors
 
@@ -55,6 +63,7 @@ const theme = {
     // shared styles
 
     panelShadow: '0px 3px 7px 0px rgba(0, 0, 0, 0.25)',
+    panelShadowHover: '0px 3px 7px 0px rgba(0, 0, 0, 0.5)',
     panelTextShadow: '0px 3px 7px rgba(0, 0, 0, 0.25)',
     panelRadius: '15px',
 

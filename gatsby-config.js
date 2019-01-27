@@ -43,7 +43,7 @@ module.exports = {
             baseId: `appk55LmpgREWJdCj`,
             tableName: `Credit_Cards`,
             tableView: `List`,
-            mapping: { perks: `text/markdown` },
+            // mapping: { perks: `text/markdown` },
             tableLinks: [`rewards_program`],
           },
           {
