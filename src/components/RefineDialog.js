@@ -16,6 +16,7 @@ import Slide from '@material-ui/core/Slide';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import InfoIcon from '@material-ui/icons/Info';
 import VisaIcon from '../images/visa.svg'
 import MastercardIcon from '../images/mastercard.svg'
 import AmexIcon from '../images/amex.svg'
@@ -24,6 +25,7 @@ import ToggleNetwork from '../components/ToggleNetwork';
 import SelectIssuer from '../components/SelectIssuer';
 import SelectRewards from '../components/SelectRewards';
 import LogoBlue from '../images/plastic-list-logo-blue.svg'
+import AdjustedAnnualFeeInfo from '../components/AdjustedAnnualFeeInfo'
 
 import styled, {ThemeProvider} from 'styled-components'
 import theme from '../layouts/theme'
@@ -33,7 +35,8 @@ import 'rc-slider/assets/index.css'
 import 'rc-tooltip/assets/bootstrap.css';
 import '../assets/sliderStyles.css'
 import Slider from 'rc-slider'
-import Tooltip from 'rc-tooltip';
+// import Tooltip from 'rc-tooltip';
+import Tooltip from '@material-ui/core/Tooltip';
 
 import { Select } from 'antd';
 
@@ -41,20 +44,20 @@ const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
 
-const handle = (props) => {
-    const { value, dragging, index, ...restProps } = props;
-    return (
-      <Tooltip
-        prefixCls="rc-slider-tooltip"
-        overlay={value}
-        visible={dragging}
-        placement="top"
-        key={index}
-      >
-        <Handle value={value} {...restProps} />
-      </Tooltip>
-    );
-  };
+// const handle = (props) => {
+//     const { value, dragging, index, ...restProps } = props;
+//     return (
+//       <Tooltip
+//         prefixCls="rc-slider-tooltip"
+//         overlay={value}
+//         visible={dragging}
+//         placement="top"
+//         key={index}
+//       >
+//         <Handle value={value} {...restProps} />
+//       </Tooltip>
+//     );
+//   };
 
 const RefineItem = styled.div`
     text-transform: uppercase;
@@ -253,7 +256,17 @@ class RefineDialog extends React.Component {
                     </RefineItem>
                     
                     <RefineItemSwitch>
-                        No Foreign Transaction Fees <SwitchWrapper color="primary" onToggle={this.handleToggle} />
+                        No Foreign Transaction Fees <SwitchWrapper value="foreignTxFeeWaived" color="primary" onToggle={this.handleToggle} />
+                    </RefineItemSwitch>
+
+                    <RefineItemSwitch>
+                        Show Adjusted Annual Fee <SwitchWrapper value="showAdjustedAnnualFee" color="primary" onToggle={this.handleToggle} />
+                        {/* <Tooltip disableFocusListener title="some info">
+                            <IconButton>
+                                <InfoIcon />
+                            </IconButton>
+                        </Tooltip> */}
+                        <AdjustedAnnualFeeInfo />
                     </RefineItemSwitch>
 
                     <RefineItem>
