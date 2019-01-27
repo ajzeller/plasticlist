@@ -140,8 +140,8 @@ class RefineDialog extends React.Component {
 
     render() {
             const { onClose, ...other } = this.props;
-            const mobile = window.innerWidth < 500
-            console.log(mobile)
+            // const mobile = window.innerWidth < 500
+            // console.log(mobile)
 
 
         return (
