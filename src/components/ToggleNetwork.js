@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, {ThemeProvider} from 'styled-components'
-import VisaIcon from '../images/visa.svg'
+import VisaIcon from '../images/Visa_blue.svg'
 import MastercardIcon from '../images/mastercard.svg'
 import AmexIcon from '../images/amex.svg'
 import DiscoverIcon from '../images/discover.svg'

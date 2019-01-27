@@ -6,6 +6,12 @@ const sizes = {
   desktop: 1600,
   tablet: 768,
   phone: 376,
+  panelColumns2: 500,
+  panelColumns3: 800,
+  panelColumns4: 1000,
+  panelColumns5: 1200,
+  panelColumns6: 1600,
+  panelColumns7: 4000,
 }
 
 // iterate through the sizes and create a media template

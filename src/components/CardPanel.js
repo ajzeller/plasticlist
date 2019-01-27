@@ -25,6 +25,7 @@ const Panel = styled.div`
     padding: 5px 8px;
     border-radius: 10px;
     min-height: 110px;
+    width: 100%;
     color: ${theme.white};
     /* text-shadow: ${theme.panelTextShadow}; */
 
@@ -33,13 +34,45 @@ const Panel = styled.div`
     background-image: ${ props => panelBackgroundColor(props) };
     box-shadow: ${theme.panelShadow};
 
-    ${media.tablet`max-width: 190px;`}
-    ${media.phone`min-width: 100px;`}
+    /* ${media.tablet`max-width: 190px;`} */
+    /* ${media.phone`width: 100%;`} */
 
-    ${media.giant`font-size: 24px;`}
-    ${media.desktop`font-size: 20px;`}
-    ${media.tablet`font-size: 18px;`}
-    ${media.phone`font-size: 16px;`}
+    /* ${media.giant`font-size: 24px;`} */
+    /* ${media.desktop`font-size: 20px;`} */
+    /* ${media.tablet`font-size: 18px;`} */
+    /* ${media.phone`font-size: 16px;`} */
+
+    ${media.panelColumns7`
+        font-size: 24px;
+        min-height: 180px;
+    `}
+
+    ${media.panelColumns6`
+        font-size: 24px;
+        min-height: 160px;
+    `}
+
+    ${media.panelColumns5`
+        font-size: 20px;
+        min-height: 140px;
+    `}
+
+    ${media.panelColumns4`
+        font-size: 18px;
+        min-height: 140px;
+    `}
+
+    ${media.panelColumns3`
+        font-size: 18px;
+        min-height: 140px;
+    `}
+
+    ${media.panelColumns2`
+        font-size: 16px;
+        min-height: 125px;
+    `}
+
+
 `
 
 const CardUpper = styled.div`

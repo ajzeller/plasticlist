@@ -26,6 +26,7 @@ import SelectIssuer from '../components/SelectIssuer';
 import SelectRewards from '../components/SelectRewards';
 import LogoBlue from '../images/plastic-list-logo-blue.svg'
 import AdjustedAnnualFeeInfo from '../components/AdjustedAnnualFeeInfo'
+import withMobileDialog from '@material-ui/core/withMobileDialog';
 
 import styled, {ThemeProvider} from 'styled-components'
 import theme from '../layouts/theme'
@@ -74,6 +75,7 @@ const RefineItemSwitch = styled(RefineItem)`
 
 const DialogInner = styled.div`
     padding: 10px;
+    overflow-x: hidden;
     /* margin: 0px auto; */
 `
 
@@ -140,6 +142,7 @@ class RefineDialog extends React.Component {
 
     render() {
             const { onClose, ...other } = this.props;
+            const { fullScreen } = this.props;
             // const mobile = window.innerWidth < 500
             // console.log(mobile)
 
@@ -152,6 +155,8 @@ class RefineDialog extends React.Component {
                 TransitionComponent={Transition}
 
                 // { mobile && fullScreen }
+                fullScreen={fullScreen}
+                // contentStyle={{width: "100%", maxWidth: "none"}}
                 maxWidth="sm"
                 {...other} >
                 <DialogInner>
@@ -291,4 +296,4 @@ RefineDialog.propTypes = {
     // onSwitchClose: PropTypes.func,
   };
 
-export default RefineDialog
+export default withMobileDialog()(RefineDialog) 

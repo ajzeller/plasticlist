@@ -48,8 +48,14 @@ const RefineMenuContainerInner = styled.div`
     justify-items: right;
     align-items: center;
     grid-template-columns: 100px 1fr;
-    max-width: 400px;
+    max-width: 450px;
     margin: auto;
+
+    ${media.giant`max-width: 400px;`}
+    ${media.desktop`max-width: 400px;`}
+    ${media.tablet`max-width: 100%;`}
+    ${media.phone`max-width: 100%;`}
+
 `
 
 const RefineButton = styled(Button)`
