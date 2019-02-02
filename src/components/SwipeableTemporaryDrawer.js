@@ -51,6 +51,10 @@ const LogoImage = styled.img`
     max-width: 100px;
 `
 
+const ListLink = styled(Link)`
+  text-decoration: none;
+`
+
 class SwipeableTemporaryDrawer extends React.Component {
   state = {
     top: false,
@@ -74,19 +78,19 @@ class SwipeableTemporaryDrawer extends React.Component {
             
             <ListItem><LogoImage src={LogoBlue} /></ListItem>
             
-            <Link to='/'>
+            <ListLink to='/'>
               <ListItem button key="cards">
                   <ListItemIcon><FormatLineSpacing /></ListItemIcon>
                     <ListItemText primary="Card List" />
               </ListItem>
-            </Link>
+            </ListLink>
             
-            <Link to='/plasticmatch'>
+            <ListLink to='/plasticmatch'>
               <ListItem button key="plasticmatch">
                 <ListItemIcon><CardIcon /></ListItemIcon>
               <ListItemText primary="PlasticMatch" />
               </ListItem>
-              </Link>
+              </ListLink>
 
             <ListItem button key="rewards">
               <ListItemIcon><CardGiftcardIcon /></ListItemIcon>
