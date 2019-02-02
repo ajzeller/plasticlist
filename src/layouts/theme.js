@@ -11,7 +11,9 @@ const theme = {
     greyBorderDark: '#D8D8D8',
     greyText: '#D8D8D8',
     lightGreyBackground: '#fafafa',
+    mediumGreyBackground: '#eeeeee',
     greyPanelBackground: '#F8F8F8',
+    trueBlack: '#000',
 
     
     // theme colors
@@ -62,7 +64,7 @@ const theme = {
 
     // shared styles
 
-    panelShadow: '0px 3px 7px 0px rgba(0, 0, 0, 0.25)',
+    panelShadow: '0px 1px 7px 0px rgba(0, 0, 0, 0.25)',
     panelShadowHover: '0px 3px 7px 0px rgba(0, 0, 0, 0.5)',
     panelTextShadow: '0px 3px 7px rgba(0, 0, 0, 0.25)',
     panelRadius: '15px',

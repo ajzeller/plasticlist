@@ -85,7 +85,6 @@ class RefineMenuWrapper extends React.Component {
         super(props)
         this.state = {
             open: false,
-            name: 'hai',
             labelWidth: 0,
         }
     }

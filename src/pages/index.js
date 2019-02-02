@@ -72,6 +72,7 @@ export const query = graphql`
             foreignTxFeeWaived
             annualFeeAfterFirstYear
             perks
+            imgName
           }
         }
       }

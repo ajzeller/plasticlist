@@ -3,6 +3,7 @@ module.exports = {
     title: `Plastic List`,
     description: `Find your next credit card`,
     author: `@andrewjzeller`,
+    pathPrefix: `/img`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

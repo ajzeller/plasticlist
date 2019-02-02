@@ -115,6 +115,7 @@ class GridWrapper extends React.Component {
             cardType={edge.node.data.cardType}
             cardRank={i + 1}
             cardDescription={edge.node.data.perks}
+            imgName={edge.node.data.imgName}
           />
         ))}
       </GridContainer>

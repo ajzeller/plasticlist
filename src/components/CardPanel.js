@@ -27,6 +27,7 @@ const Panel = styled.div`
     border-radius: 10px;
     min-height: 110px;
     width: 100%;
+    height: 100%;
     color: ${theme.white};
     /* text-shadow: ${theme.panelTextShadow}; */
 
@@ -72,9 +73,43 @@ const Panel = styled.div`
         font-size: 16px;
         min-height: 110px;
     `}
-`
 
-const PanelContainer = styled.div`
+    `
+
+const PanelWrapper = styled.div`
+
+    width: 100%;
+
+    ${media.panelColumns7`
+        font-size: 24px;
+        min-height: 180px;
+    `}
+
+    ${media.panelColumns6`
+        font-size: 24px;
+        min-height: 160px;
+    `}
+
+    ${media.panelColumns5`
+        font-size: 20px;
+        min-height: 140px;
+    `}
+
+    ${media.panelColumns4`
+        font-size: 18px;
+        min-height: 140px;
+    `}
+
+    ${media.panelColumns3`
+        font-size: 18px;
+        min-height: 140px;
+    `}
+
+    ${media.panelColumns2`
+        font-size: 16px;
+        min-height: 110px;
+    `}
+
 `
 
 const CardUpper = styled.div`
@@ -207,9 +242,10 @@ class CardPanel extends React.Component {
     }
 
     handlePanelClick() {
-        this.setState({
-          open: !this.state.open,
-        })
+        this.setState({ open: !this.state.open });
+        // this.setState({
+        //     open: !this.state.open,
+        // })
       }
     
       handleClose = value => {
@@ -219,65 +255,70 @@ class CardPanel extends React.Component {
     render(){
         return(
 
-            <Panel cardColor = {this.props.cardColor} onClick={() => this.handlePanelClick()}>
-                <CardUpper >
-                    <CardRank>{this.props.cardRank}</CardRank>
-                    
-                    <CardIssuer>  <span>  {this.props.cardIssuer} </span></CardIssuer>
-                </CardUpper>
-
-                    <CardName><span>{this.props.cardName}</span></CardName>
-
-                <CardLower >
-                    <ContainerCardLowerLeft>
-                        <ContainerSpend>
-                                <Label>Spend</Label> ${this.props.requiredSpend/1000}k                        
-                        </ContainerSpend>
-
-                        <ContainerBonus>
-                            <Label>Bonus Value</Label> ${this.props.bonusValue}
-
-                        </ContainerBonus>
-
-                    </ContainerCardLowerLeft>
-                    
-                    <ContainerCardLowerRight>
-                        <AnnualFee>
-                        ${this.props.annualFee}<Label>/yr</Label>
-                        </AnnualFee>
-
-                        <ContainerBottomRight>
-                            <CardType>{this.props.cardType == 'Business' && <BusinessIcon /> } </CardType>
-
-                            {/* <NetworkBrand> */}
-                                {this.props.network == 'VISA' && <NetWorkIcon src={Visa} /> }
-                                {this.props.network === 'AMEX' && <NetWorkIcon src={Amex} /> }
-                                {this.props.network === 'MasterCard' && <NetWorkIcon src={Mastercard} /> }
-                                {this.props.network === 'Discover' && <NetWorkIcon src={Discover} /> }
-                            {/* </NetworkBrand>  */}
+            <PanelWrapper>
+                <Panel cardColor = {this.props.cardColor} onClick={() => this.handlePanelClick()}>
+                    <CardUpper >
+                        <CardRank>{this.props.cardRank}</CardRank>
                         
-                        </ContainerBottomRight>
-                    
-                    </ContainerCardLowerRight>
+                        <CardIssuer>  <span>  {this.props.cardIssuer} </span></CardIssuer>
+                    </CardUpper>
+    
+                        <CardName><span>{this.props.cardName}</span></CardName>
+    
+                    <CardLower >
+                        <ContainerCardLowerLeft>
+                            <ContainerSpend>
+                                    <Label>Spend</Label> ${this.props.requiredSpend/1000}k                        
+                            </ContainerSpend>
+    
+                            <ContainerBonus>
+                                <Label>Bonus Value</Label> ${this.props.bonusValue}
+    
+                            </ContainerBonus>
+    
+                        </ContainerCardLowerLeft>
+                        
+                        <ContainerCardLowerRight>
+                            <AnnualFee>
+                            ${this.props.annualFee}<Label>/yr</Label>
+                            </AnnualFee>
+    
+                            <ContainerBottomRight>
+                                <CardType>{this.props.cardType == 'Business' && <BusinessIcon /> } </CardType>
+    
+                                {/* <NetworkBrand> */}
+                                    {this.props.network == 'VISA' && <NetWorkIcon src={Visa} /> }
+                                    {this.props.network === 'AMEX' && <NetWorkIcon src={Amex} /> }
+                                    {this.props.network === 'MasterCard' && <NetWorkIcon src={Mastercard} /> }
+                                    {this.props.network === 'Discover' && <NetWorkIcon src={Discover} /> }
+                                {/* </NetworkBrand>  */}
+                            
+                            </ContainerBottomRight>
+                        
+                        </ContainerCardLowerRight>
+    
+                    </CardLower>
+    
+                </Panel>
 
-                </CardLower>
-
-                <CardDialog 
-                    open={this.state.open}
-                    onClose={this.handleClose} 
-                    cardName={this.props.cardName}
-                    cardIssuer={this.props.cardIssuer}
-                    network={this.props.network}
-                    cardColor={this.props.cardColor}
-                    requiredSpend={this.props.requiredSpend}
-                    requiredSpendWindow={this.props.requiredSpendWindow}
-                    bonusValue={this.props.bonusValue}
-                    annualFee={this.props.annualFee}
-                    cardType={this.props.cardType}
-                    cardRank={this.props.cardRank}
-                    cardDescription={this.props.cardDescription}
-                />
-            </Panel>
+                    <CardDialog 
+                        open={this.state.open}
+                        {...this.props}
+                        onClose={this.handleClose} 
+                        // cardName={this.props.cardName}
+                        // cardIssuer={this.props.cardIssuer}
+                        // network={this.props.network}
+                        // cardColor={this.props.cardColor}
+                        // requiredSpend={this.props.requiredSpend}
+                        // requiredSpendWindow={this.props.requiredSpendWindow}
+                        // bonusValue={this.props.bonusValue}
+                        // annualFee={this.props.annualFee}
+                        // cardType={this.props.cardType}
+                        // cardRank={this.props.cardRank}
+                        // cardDescription={this.props.cardDescription}
+                        // imgName={this.props.imgName}
+                    />
+            </PanelWrapper>
 
 
         )
