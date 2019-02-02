@@ -57,18 +57,24 @@ const LogoContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 50px 50px;
+    align-items: center;
 `
 
 const IssuerLogo = styled.img`
     max-width: 75%;
-    max-height:50px;
+    max-height: 40px;
+    margin: 0px 0px 5px 0px;
+    align-self: flex-end;
+    border-radius: 5px;
 `
 
 const LayeredBackground = styled.div`
     background-color: ${theme.mediumGreyBackground};
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5c5c5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+
     top: 100px;
     z-index: 200;
-    padding: 50px 0 0 0;
+    padding: 50px 10px 0 10px;
 `
 
 const CardImage = styled.img`
@@ -77,10 +83,12 @@ const CardImage = styled.img`
     /* max-height: 100px; */
     width: 40vw;
     max-width: 300px;
-    margin: 10px 10px 10px 0;
+    /* margin: 10px 10px 10px 0; */
+    margin: 0px 10px 0 0;
     display: block;
     z-index: 100;
-    justify-self: flex-end;
+    justify-self: center;
+    align-self: center;
 `
 
 const IconButtonClose = styled(IconButton)`
@@ -123,13 +131,16 @@ const Title = styled.div`
     font-size: 1.5em;
     text-transform: uppercase;
     text-align: center;
-    margin: 15px 0;
+    margin: 10px 0 0 0;
     color: ${theme.trueBlack};
 `
 
 const NetWorkIcon = styled.img`
-    width: 50px;
-    margin: 10px 0;
+    margin: 0px 10px 0 0;
+    opacity: 1;
+    border-radius: 30px;
+    height: 30px;
+    box-shadow: ${theme.panelShadow};
 `
 
 
@@ -138,30 +149,78 @@ const SubPanel = styled.div`
     box-shadow: ${theme.panelShadow};
     border-radius: ${theme.panelRadius};
     padding: 10px;
-    margin: 10px;
+    margin: 10px 0px 0px 0px;
 `
 
 const SubPanelTitle = styled.div`
-    font-size: 0.8em;
+    font-size: 0.75em;
     text-transform: uppercase;
     text-align: left;
-    margin: 5px 0px 10px 5px;
-    color: ${theme.black};
+    margin: 0px 0px 10px 0px;
+    color: ${theme.darkGreytext};
 `
 
 const CardType = styled.div`
-    font-size: 0.8em;
+    font-size: 0.9em;
     text-transform: uppercase;
+    height: 30px;
+    line-height: 30px;
+    padding: 0 12px;
     text-align: center;
-    padding: 8px 10px;
+    vertical-align: middle;
+    /* padding: 8px 10px; */
     border-radius: 30px;
-    margin: 5px 5px;
+    margin: 0px 10px 0px 0px;
     color: ${theme.white};
     background-color: ${theme.primary};
-    display: inline;
+    /* background-color: #2f88cc; */
+/* background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9c9c9' fill-opacity='0.54' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); */
+    display: inline-block;
     box-shadow: ${theme.panelShadow};
-
 `
+
+const TagContainer = styled.div`
+    /* display: flex; */
+    margin: 0 0px;
+    opacity: 1;
+`
+
+const BonusGrid = styled.div`
+    /* display: grid; */
+    /* grid-template-columns: 1fr 1fr; */
+`
+
+const ApplyButton = styled(Button)`
+    /* max-height */
+`
+
+const ValueEmphasis = styled.span`
+    font-size: 24px;
+    color: ${theme.trueBlack};
+`
+
+const PanelTextSmall = styled.div`
+    height: 30px;
+    display: inline-block;
+    text-transform: uppercase;
+    color: #A4A4A4;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: 400;
+    text-align: left;
+    /* vertical-align: middle; */
+    max-width: 50px;
+`
+
+const CardGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+`   
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
 
 function Transition(props) {
     return <Slide direction="up" {...props} />;
@@ -240,12 +299,13 @@ class CardDialog extends React.Component {
 
                             {/* <NetWorkIcon src={`Visa`} />  */}
 
-
-
-                            {this.props.network == 'VISA' && <NetWorkIcon src={Visa} /> }
-                            {this.props.network === 'AMEX' && <NetWorkIcon src={Amex} /> }
-                            {this.props.network === 'MasterCard' && <NetWorkIcon src={Mastercard} /> }
-                            {this.props.network === 'Discover' && <NetWorkIcon src={Discover} /> }
+                            <TagContainer>
+                                {this.props.network == 'VISA' && <NetWorkIcon src={Visa} /> }
+                                {this.props.network === 'AMEX' && <NetWorkIcon src={Amex} /> }
+                                {this.props.network === 'MasterCard' && <NetWorkIcon src={Mastercard} /> }
+                                {this.props.network === 'Discover' && <NetWorkIcon src={Discover} /> }
+                                <CardType>{this.props.cardType}</CardType>
+                            </TagContainer>
 
                         </LogoContainer>
                     </CardDialogUpper>
@@ -253,23 +313,38 @@ class CardDialog extends React.Component {
                     <LayeredBackground>
                             <Title>{this.props.cardName}</Title>
 
-                            <CardType>{this.props.cardType}</CardType>
+                            <CardGrid>
+
+
+
 
                         <SubPanel>
                             <SubPanelTitle>Bonus Value</SubPanelTitle>
-                            <span>${this.props.bonusValue}</span> 
+
+                            <BonusGrid>
+                                <ValueEmphasis>{numberWithCommas(this.props.bonusValuePoints)}</ValueEmphasis>
+                                <PanelTextSmall>Points</PanelTextSmall>
+                            </BonusGrid>
+
+                            <BonusGrid>
+                                <PanelTextSmall>Equal to</PanelTextSmall>
+                                <ValueEmphasis>${numberWithCommas(this.props.bonusValue)}</ValueEmphasis>
+                            </BonusGrid>
+                            <span></span> 
 
                         </SubPanel>
 
                         <SubPanel>
                             <SubPanelTitle>Required Spending</SubPanelTitle>
-                                Spend ${this.props.requiredSpend} over {this.props.requiredSpendWindow} days
-
+                            <ValueEmphasis>${this.props.requiredSpend}</ValueEmphasis>
+                            <PanelTextSmall>In first {this.props.requiredSpendWindow/30} Months</PanelTextSmall>
                             <SubPanelTitle>Annual Fee</SubPanelTitle>
-                            <span>${this.props.annualFee}</span> first year
+                            <ValueEmphasis>${this.props.annualFee}</ValueEmphasis> first year
                             <span>${this.props.annualFee}</span> after
                             
                         </SubPanel>
+
+                            </CardGrid>
 
                         <SubPanel>
                             <SubPanelTitle>Perks</SubPanelTitle>
@@ -283,12 +358,12 @@ class CardDialog extends React.Component {
                         
 
 
+                        <Button variant="contained" color="primary" >
+                            Learn More and Apply
+                        </Button>
 
                     </LayeredBackground>
     
-                    <Button variant="contained" color="primary" >
-                        Learn More and Apply
-                    </Button>
 
                 </CardDialogInner>
                 

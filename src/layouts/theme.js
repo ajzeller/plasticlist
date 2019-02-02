@@ -10,6 +10,7 @@ const theme = {
     greyBorderLight: '#E9E6E9',
     greyBorderDark: '#D8D8D8',
     greyText: '#D8D8D8',
+    darkGreytext: '#858585',
     lightGreyBackground: '#fafafa',
     mediumGreyBackground: '#eeeeee',
     greyPanelBackground: '#F8F8F8',

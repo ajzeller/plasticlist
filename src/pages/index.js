@@ -65,6 +65,7 @@ export const query = graphql`
             colorPrimary
             requiredSpend
             bonusValue
+            bonusValuePoints
             requiredSpendWindowDays
             cashBackPercent
             cardType

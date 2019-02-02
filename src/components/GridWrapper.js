@@ -111,11 +111,13 @@ class GridWrapper extends React.Component {
             requiredSpend={edge.node.data.requiredSpend}
             requiredSpendWindow={edge.node.data.requiredSpendWindowDays}
             bonusValue={edge.node.data.bonusValue}
+            bonusValuePoints={edge.node.data.bonusValuePoints}
             annualFee={edge.node.data.annualFeeAfterFirstYear}
             cardType={edge.node.data.cardType}
             cardRank={i + 1}
             cardDescription={edge.node.data.perks}
             imgName={edge.node.data.imgName}
+
           />
         ))}
       </GridContainer>
