@@ -56,7 +56,7 @@ const CardDialogUpper = styled.div`
 const LogoContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 50px;
+    grid-template-rows: 50px 40px;
     align-items: center;
 `
 
@@ -180,9 +180,8 @@ const CardType = styled.div`
 `
 
 const TagContainer = styled.div`
-    /* display: flex; */
-    margin: 0 0px;
-    opacity: 1;
+    height: 30px;
+    align-self: flex-end;
 `
 
 const BonusGrid = styled.div`
