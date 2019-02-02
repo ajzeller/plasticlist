@@ -47,7 +47,7 @@ const CardDialogUpper = styled.div`
     max-height: 15vw;
     display: grid;
     grid-template-columns: 2fr 2fr;
-    grid-template-rows: 100px;
+    grid-template-rows: 120px;
     background-color: ${theme.white};
     padding: 0 10px;
 
@@ -56,7 +56,7 @@ const CardDialogUpper = styled.div`
 const LogoContainer = styled.div`
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 50px 40px;
+    grid-template-rows: 50px 70px;
     align-items: center;
 `
 
@@ -160,7 +160,7 @@ const SubPanelTitle = styled.div`
     color: ${theme.darkGreytext};
 `
 
-const CardType = styled.div`
+const CardType = styled.span`
     font-size: 0.9em;
     text-transform: uppercase;
     height: 30px;
@@ -181,7 +181,8 @@ const CardType = styled.div`
 
 const TagContainer = styled.div`
     height: 30px;
-    align-self: flex-end;
+    margin: 15px 0 0 0;
+    align-self: flex-start;
 `
 
 const BonusGrid = styled.div`
