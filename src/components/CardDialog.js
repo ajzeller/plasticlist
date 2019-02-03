@@ -14,6 +14,7 @@ import CloseIcon from '@material-ui/icons/Close';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Slide from '@material-ui/core/Slide';
+import Fab from '@material-ui/core/Fab';
 // import CardDialogBottomNav from '../components/CardDialogBottomNav'
 
 import Visa from '../images/Visa_blue.svg'
@@ -44,7 +45,7 @@ const CardDialogInner = styled.div`
 `
 
 const CardDialogUpper = styled.div`
-    max-height: 15vw;
+    height: 8vh;
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-template-rows: 120px;
@@ -71,10 +72,10 @@ const IssuerLogo = styled.img`
 const LayeredBackground = styled.div`
     background-color: ${theme.mediumGreyBackground};
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5c5c5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-
+    min-height: 84vh;
     top: 100px;
     z-index: 200;
-    padding: 50px 10px 0 10px;
+    padding: 50px 10px 10px 10px;
 `
 
 const CardImage = styled.img`
@@ -99,15 +100,18 @@ const DialogHeader = styled.div`
     display: grid;
     justify-items: flex-end;
     background-color: ${theme.white};
+    height: 8vh;
 `
 
 const CardDialogBottomNav = styled.div`
-    position: absolute;
     width: 100%;
-    bottom: 10px;
-    display: grid;
+    position: fixed;
+    bottom: 0px;
+    padding: 10px 10px;
+    /* height: 70px; */
+    /* display: fixed; */
     grid-template-columns: 1fr;
-    justify-items: center;
+    justify-items: flex-end;
     /* margin: 0 0 10px 0; */
 `
 const InfoItem = styled.div`
@@ -156,7 +160,7 @@ const SubPanelTitle = styled.div`
     font-size: 0.75em;
     text-transform: uppercase;
     text-align: left;
-    margin: 0px 0px 10px 0px;
+    margin: 0px 0px 5px 0px;
     color: ${theme.darkGreytext};
 `
 
@@ -193,8 +197,11 @@ const BonusGrid = styled.div`
     /* grid-template-columns: 1fr 1fr; */
 `
 
-const ApplyButton = styled(Button)`
+const ApplyButton = styled(Fab)`
+    height: 50px;
     /* max-height */
+    /* box-shadow: ${theme.panelShadow}; */
+    /* border-radius: 20px; */
 `
 
 const ValueEmphasis = styled.span`
@@ -202,8 +209,8 @@ const ValueEmphasis = styled.span`
     color: ${theme.trueBlack};
 `
 
-const PanelTextSmall = styled.div`
-    height: 30px;
+const PanelTextSmall = styled.span`
+    /* height: 30px; */
     display: inline-block;
     text-transform: uppercase;
     color: #A4A4A4;
@@ -212,7 +219,8 @@ const PanelTextSmall = styled.div`
     font-weight: 400;
     text-align: left;
     /* vertical-align: middle; */
-    max-width: 50px;
+    /* max-width: 50px; */
+    margin: 0px 5px;
 `
 
 const CardGrid = styled.div`
@@ -220,6 +228,24 @@ const CardGrid = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px;
 `   
+
+const PanelSubGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+`
+
+const RequiredSpendingGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+`   
+
+const AnnualFeeGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+`
 
 function numberWithCommas(x) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -339,22 +365,31 @@ class CardDialog extends React.Component {
 
                         <SubPanel>
                             <SubPanelTitle>Required Spending</SubPanelTitle>
-                            <ValueEmphasis>${this.props.requiredSpend}</ValueEmphasis>
-                            <PanelTextSmall>In first {this.props.requiredSpendWindow/30} Months</PanelTextSmall>
-                            <SubPanelTitle>Annual Fee</SubPanelTitle>
-                                <ValueEmphasis>${this.props.annualFeeFirstYear}</ValueEmphasis> 
-                                <PanelTextSmall>
-                                    first year
-                                </PanelTextSmall> 
 
-                                <ValueEmphasis>${this.props.annualFeeAfterFirstYear}</ValueEmphasis> 
-                                <PanelTextSmall>
-                                    after
-                                </PanelTextSmall> 
+                            <RequiredSpendingGrid>
+                                <ValueEmphasis>${this.props.requiredSpend}</ValueEmphasis>
+                                <PanelTextSmall>In first {this.props.requiredSpendWindow/30} Months</PanelTextSmall>
+                            </RequiredSpendingGrid>
+
+
                             
                         </SubPanel>
 
                             </CardGrid>
+
+                        <SubPanel>
+                            <SubPanelTitle>Annual Fee</SubPanelTitle>
+                            <AnnualFeeGrid>
+                                <ValueEmphasis>${this.props.annualFeeFirstYear}</ValueEmphasis> 
+                                <ValueEmphasis>${this.props.annualFeeAfterFirstYear}</ValueEmphasis> 
+                                <ValueEmphasis>${this.props.adjustedAnnualFee}</ValueEmphasis> 
+
+                                <PanelTextSmall>first year</PanelTextSmall> 
+                                <PanelTextSmall>after</PanelTextSmall> 
+                                <PanelTextSmall>Adjusted</PanelTextSmall> 
+                            </AnnualFeeGrid>
+
+                        </SubPanel>
 
                         <SubPanel>
                             <SubPanelTitle>Perks</SubPanelTitle>
@@ -368,12 +403,13 @@ class CardDialog extends React.Component {
                         
 
 
-                        <Button variant="contained" color="primary" >
-                            Learn More and Apply
-                        </Button>
-
                     </LayeredBackground>
     
+                        <CardDialogBottomNav>
+                            <ApplyButton variant="extended" color="primary" >
+                                Learn More and Apply
+                            </ApplyButton>
+                        </CardDialogBottomNav>
 
                 </CardDialogInner>
                 
