@@ -71,7 +71,9 @@ export const query = graphql`
             cardType
             plasticScoreNormalized
             foreignTxFeeWaived
+            annualFeeFirstYear
             annualFeeAfterFirstYear
+            adjustedAnnualFee
             perks
             imgName
           }

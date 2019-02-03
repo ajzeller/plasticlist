@@ -112,7 +112,9 @@ class GridWrapper extends React.Component {
             requiredSpendWindow={edge.node.data.requiredSpendWindowDays}
             bonusValue={edge.node.data.bonusValue}
             bonusValuePoints={edge.node.data.bonusValuePoints}
-            annualFee={edge.node.data.annualFeeAfterFirstYear}
+            annualFeeAfterFirstYear={edge.node.data.annualFeeAfterFirstYear}
+            annualFeeFirstYear={edge.node.data.annualFeeFirstYear}
+            adjustedAnnualFee={edge.node.data.adjustedAnnualFee}
             cardType={edge.node.data.cardType}
             cardRank={i + 1}
             cardDescription={edge.node.data.perks}

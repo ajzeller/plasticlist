@@ -161,7 +161,7 @@ const SubPanelTitle = styled.div`
 `
 
 const CardType = styled.span`
-    font-size: 0.9em;
+    font-size: 0.8em;
     text-transform: uppercase;
     height: 30px;
     line-height: 30px;
@@ -175,13 +175,16 @@ const CardType = styled.span`
     background-color: ${theme.primary};
     /* background-color: #2f88cc; */
 /* background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9c9c9' fill-opacity='0.54' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); */
-    display: inline-block;
+    display: block;
+    max-width: 90px;
     box-shadow: ${theme.panelShadow};
 `
 
 const TagContainer = styled.div`
     height: 30px;
     margin: 15px 0 0 0;
+    display: grid;
+    grid-template-columns: 60px 1fr;
     align-self: flex-start;
 `
 
@@ -339,8 +342,15 @@ class CardDialog extends React.Component {
                             <ValueEmphasis>${this.props.requiredSpend}</ValueEmphasis>
                             <PanelTextSmall>In first {this.props.requiredSpendWindow/30} Months</PanelTextSmall>
                             <SubPanelTitle>Annual Fee</SubPanelTitle>
-                            <ValueEmphasis>${this.props.annualFee}</ValueEmphasis> first year
-                            <span>${this.props.annualFee}</span> after
+                                <ValueEmphasis>${this.props.annualFeeFirstYear}</ValueEmphasis> 
+                                <PanelTextSmall>
+                                    first year
+                                </PanelTextSmall> 
+
+                                <ValueEmphasis>${this.props.annualFeeAfterFirstYear}</ValueEmphasis> 
+                                <PanelTextSmall>
+                                    after
+                                </PanelTextSmall> 
                             
                         </SubPanel>
 
