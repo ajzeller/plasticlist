@@ -280,7 +280,7 @@ class CardPanel extends React.Component {
                         
                         <ContainerCardLowerRight>
                             <AnnualFee>
-                            ${this.props.annualFee}<Label>/yr</Label>
+                            ${this.props.annualFeeAfterFirstYear}<Label>/yr</Label>
                             </AnnualFee>
     
                             <ContainerBottomRight>

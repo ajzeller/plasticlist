@@ -33,6 +33,9 @@ const CardDialogContainer = styled(Dialog)`
     /* font-family: share tech mono; */
     font-weight: 800;
     text-transform: none;
+    /* overflow: hidden !important; */
+    overflow-x: hidden !important;
+    overflow-y: scroll;
     `
 
 const CardDialogInner = styled.div`
@@ -45,12 +48,19 @@ const CardDialogInner = styled.div`
 `
 
 const CardDialogUpper = styled.div`
-    height: 8vh;
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-template-rows: 120px;
     background-color: ${theme.white};
     padding: 0 10px;
+
+    ${media.giant`
+        height: 10vh;
+    `}
+
+    ${media.phone`
+        height: 8vh;
+    `}
 
 `
 
@@ -72,10 +82,20 @@ const IssuerLogo = styled.img`
 const LayeredBackground = styled.div`
     background-color: ${theme.mediumGreyBackground};
     background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5c5c5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-    min-height: 84vh;
-    top: 100px;
+    
+    top: 130px;
     z-index: 200;
-    padding: 50px 10px 10px 10px;
+    ${media.giant`
+        padding: 70px 4vw 20px 4vw;
+    
+    `}
+
+    ${media.phone`
+        min-height: 84vh;
+        padding: 70px 10px 70px 10px;
+
+    `}
+
 `
 
 const CardImage = styled.img`
@@ -83,7 +103,7 @@ const CardImage = styled.img`
     /* margin: 10px 20px; */
     /* max-height: 100px; */
     width: 40vw;
-    max-width: 300px;
+    max-width: 250px;
     /* margin: 10px 10px 10px 0; */
     margin: 0px 10px 0 0;
     display: block;
@@ -100,19 +120,30 @@ const DialogHeader = styled.div`
     display: grid;
     justify-items: flex-end;
     background-color: ${theme.white};
-    height: 8vh;
+    /* height: 8vh; */
+    ${media.phone`height: 8vh;`}
+
+
 `
 
 const CardDialogBottomNav = styled.div`
     width: 100%;
-    position: fixed;
-    bottom: 0px;
-    padding: 10px 10px;
+    display: grid;
+    justify-content: flex-end;
+    ${media.phone`
+        bottom: 0px;
+        position: fixed;
+        padding: 10px 10px;
+        margin: 0;
+
+    `}
+
+    position: sticky;
+    bottom: 20px;
+    margin: 0 auto;
+    padding: 0px 10px 0px 0;
     /* height: 70px; */
     /* display: fixed; */
-    grid-template-columns: 1fr;
-    justify-items: flex-end;
-    /* margin: 0 0 10px 0; */
 `
 const InfoItem = styled.div`
     /* text-transform: uppercase; */
@@ -135,8 +166,13 @@ const Title = styled.div`
     font-size: 1.5em;
     text-transform: uppercase;
     text-align: center;
-    margin: 10px 0 0 0;
+    margin: 2vw 0 1vw 0;
     color: ${theme.trueBlack};
+
+    ${media.phone`
+        /* margin: 10px 0 0 0; */
+
+    `}
 `
 
 const NetWorkIcon = styled.img`
@@ -188,7 +224,7 @@ const TagContainer = styled.div`
     height: 30px;
     margin: 15px 0 0 0;
     display: grid;
-    grid-template-columns: 60px 1fr;
+    grid-template-columns: 50px 1fr;
     align-self: flex-start;
 `
 
@@ -198,7 +234,9 @@ const BonusGrid = styled.div`
 `
 
 const ApplyButton = styled(Fab)`
-    height: 50px;
+    /* height: 50px; */
+    /* margin: 0 auto; */
+    /* float: right; */
     /* max-height */
     /* box-shadow: ${theme.panelShadow}; */
     /* border-radius: 20px; */
@@ -220,7 +258,7 @@ const PanelTextSmall = styled.span`
     text-align: left;
     /* vertical-align: middle; */
     /* max-width: 50px; */
-    margin: 0px 5px;
+    margin: 5px 5px 0px 5px;
 `
 
 const CardGrid = styled.div`
@@ -395,6 +433,7 @@ class CardDialog extends React.Component {
                             <SubPanelTitle>Perks</SubPanelTitle>
 
                             <InfoItem>
+                                <ReactMarkdown source={this.props.cardDescription} />
                                 <ReactMarkdown source={this.props.cardDescription} />
                             </InfoItem>
 

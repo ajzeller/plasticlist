@@ -5,7 +5,7 @@ const sizes = {
   giant: 4000,
   desktop: 1600,
   tablet: 768,
-  phone: 376,
+  phone: 420,
   panelColumns2: 500,
   panelColumns3: 800,
   panelColumns4: 1000,
