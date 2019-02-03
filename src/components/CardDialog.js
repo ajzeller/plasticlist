@@ -11,6 +11,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import Dialog from '@material-ui/core/Dialog';
 import IconButton from '@material-ui/core/IconButton';
 import CloseIcon from '@material-ui/icons/Close';
+import BusinessIcon from '@material-ui/icons/BusinessCenter';
 import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 import withMobileDialog from '@material-ui/core/withMobileDialog';
 import Slide from '@material-ui/core/Slide';
@@ -110,6 +111,7 @@ const CardImage = styled.img`
     z-index: 100;
     justify-self: center;
     align-self: center;
+    opacity: 0.8;
 `
 
 const IconButtonClose = styled(IconButton)`
@@ -185,7 +187,8 @@ const NetWorkIcon = styled.img`
 
 
 const SubPanel = styled.div`
-    background-color: ${theme.white};
+    background-color: rgba(255,255,255,0.75);
+    opacity: 1;
     box-shadow: ${theme.panelShadow};
     border-radius: ${theme.panelRadius};
     padding: 10px;
@@ -200,24 +203,29 @@ const SubPanelTitle = styled.div`
     color: ${theme.darkGreytext};
 `
 
-const CardType = styled.span`
+const CardType = styled.div`
     font-size: 0.8em;
     text-transform: uppercase;
     height: 30px;
     line-height: 30px;
-    padding: 0 12px;
+    padding: 0px 12px;
     text-align: center;
     vertical-align: middle;
     /* padding: 8px 10px; */
     border-radius: 30px;
     margin: 0px 10px 0px 0px;
-    color: ${theme.white};
-    background-color: ${theme.primary};
+    color: ${theme.black};
+    background-color: ${theme.white};
     /* background-color: #2f88cc; */
 /* background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c9c9c9' fill-opacity='0.54' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); */
     display: block;
-    max-width: 90px;
+    opacity: 0.5;
+    max-width: 100px;
     box-shadow: ${theme.panelShadow};
+
+    svg {
+        height: 15px;
+    }
 `
 
 const TagContainer = styled.div`
@@ -233,17 +241,23 @@ const BonusGrid = styled.div`
     /* grid-template-columns: 1fr 1fr; */
 `
 
+const panelBackgroundColor = (props) => {
+    return props.theme[props.cardColor]
+}
+
 const ApplyButton = styled(Fab)`
-    /* height: 50px; */
+    height: 40px !important;
+    color: ${theme.white} !important;
     /* margin: 0 auto; */
     /* float: right; */
     /* max-height */
     /* box-shadow: ${theme.panelShadow}; */
     /* border-radius: 20px; */
+    background-image: ${ props => panelBackgroundColor(props) } !important;
 `
 
 const ValueEmphasis = styled.span`
-    font-size: 24px;
+    font-size: 20px;
     color: ${theme.trueBlack};
 `
 
@@ -261,9 +275,15 @@ const PanelTextSmall = styled.span`
     margin: 5px 5px 0px 5px;
 `
 
-const CardGrid = styled.div`
+const CardGridFirstRow = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-gap: 10px;
+`   
+
+const CardGridSecondRow = styled.div`
+    display: grid;
+    grid-template-columns: 2fr 1fr;
     grid-gap: 10px;
 `   
 
@@ -282,6 +302,12 @@ const RequiredSpendingGrid = styled.div`
 const AnnualFeeGrid = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+`
+
+const CashBackGrid = styled.div`
+    display: grid;
+    grid-template-columns: 1fr;
     justify-items: center;
 `
 
@@ -356,6 +382,7 @@ class CardDialog extends React.Component {
                     </DialogHeader>
 
                     <CardDialogUpper>
+                    {/* {this.props.cardRank} */}
                         <CardImage src={withPrefix(`/img/${this.props.imgName}.png`)} />
 
                         
@@ -380,60 +407,61 @@ class CardDialog extends React.Component {
                     <LayeredBackground>
                             <Title>{this.props.cardName}</Title>
 
-                            <CardGrid>
+                            <CardGridFirstRow>
+                                <SubPanel>
+                                    <SubPanelTitle>Bonus Value</SubPanelTitle>
 
+                                    <BonusGrid>
+                                        <ValueEmphasis>{numberWithCommas(this.props.bonusValuePoints)}</ValueEmphasis>
+                                        <PanelTextSmall>Points</PanelTextSmall>
+                                    </BonusGrid>
 
+                                    <BonusGrid>
+                                        <PanelTextSmall>Equal to</PanelTextSmall>
+                                        <ValueEmphasis>${numberWithCommas(this.props.bonusValue)}</ValueEmphasis>
+                                    </BonusGrid>
+                                    <span></span> 
 
+                                </SubPanel>
 
-                        <SubPanel>
-                            <SubPanelTitle>Bonus Value</SubPanelTitle>
+                                <SubPanel>
+                                    <SubPanelTitle>Required Spending</SubPanelTitle>
 
-                            <BonusGrid>
-                                <ValueEmphasis>{numberWithCommas(this.props.bonusValuePoints)}</ValueEmphasis>
-                                <PanelTextSmall>Points</PanelTextSmall>
-                            </BonusGrid>
+                                    <RequiredSpendingGrid>
+                                        <ValueEmphasis>${this.props.requiredSpend}</ValueEmphasis>
+                                        <PanelTextSmall>In first {this.props.requiredSpendWindow/30} Months</PanelTextSmall>
+                                    </RequiredSpendingGrid>
+                                </SubPanel>
+                            </CardGridFirstRow>
 
-                            <BonusGrid>
-                                <PanelTextSmall>Equal to</PanelTextSmall>
-                                <ValueEmphasis>${numberWithCommas(this.props.bonusValue)}</ValueEmphasis>
-                            </BonusGrid>
-                            <span></span> 
-
-                        </SubPanel>
-
-                        <SubPanel>
-                            <SubPanelTitle>Required Spending</SubPanelTitle>
-
-                            <RequiredSpendingGrid>
-                                <ValueEmphasis>${this.props.requiredSpend}</ValueEmphasis>
-                                <PanelTextSmall>In first {this.props.requiredSpendWindow/30} Months</PanelTextSmall>
-                            </RequiredSpendingGrid>
-
-
-                            
-                        </SubPanel>
-
-                            </CardGrid>
-
-                        <SubPanel>
-                            <SubPanelTitle>Annual Fee</SubPanelTitle>
-                            <AnnualFeeGrid>
-                                <ValueEmphasis>${this.props.annualFeeFirstYear}</ValueEmphasis> 
-                                <ValueEmphasis>${this.props.annualFeeAfterFirstYear}</ValueEmphasis> 
-                                <ValueEmphasis>${this.props.adjustedAnnualFee}</ValueEmphasis> 
-
-                                <PanelTextSmall>first year</PanelTextSmall> 
-                                <PanelTextSmall>after</PanelTextSmall> 
-                                <PanelTextSmall>Adjusted</PanelTextSmall> 
-                            </AnnualFeeGrid>
-
-                        </SubPanel>
+                        <CardGridSecondRow>
+                            <SubPanel>
+                                <SubPanelTitle>Annual Fee</SubPanelTitle>
+                                <AnnualFeeGrid>
+                                    <ValueEmphasis>${this.props.annualFeeFirstYear}</ValueEmphasis> 
+                                    <ValueEmphasis>${this.props.annualFeeAfterFirstYear}</ValueEmphasis> 
+                                    <ValueEmphasis>${this.props.adjustedAnnualFee}</ValueEmphasis> 
+    
+                                    <PanelTextSmall>first year</PanelTextSmall> 
+                                    <PanelTextSmall>after</PanelTextSmall> 
+                                    <PanelTextSmall>Adjusted</PanelTextSmall> 
+                                </AnnualFeeGrid>
+    
+                            </SubPanel>
+    
+                            <SubPanel>
+                                <SubPanelTitle>Cash Back</SubPanelTitle>
+                                <CashBackGrid>
+                                    <ValueEmphasis>{this.props.cashBack}%</ValueEmphasis> 
+                                    <PanelTextSmall>Everything</PanelTextSmall>
+                                </CashBackGrid> 
+                            </SubPanel>
+                        </CardGridSecondRow>
 
                         <SubPanel>
                             <SubPanelTitle>Perks</SubPanelTitle>
 
                             <InfoItem>
-                                <ReactMarkdown source={this.props.cardDescription} />
                                 <ReactMarkdown source={this.props.cardDescription} />
                             </InfoItem>
 
@@ -445,7 +473,7 @@ class CardDialog extends React.Component {
                     </LayeredBackground>
     
                         <CardDialogBottomNav>
-                            <ApplyButton variant="extended" color="primary" >
+                            <ApplyButton variant="extended" cardColor = {this.props.cardColor} >
                                 Learn More and Apply
                             </ApplyButton>
                         </CardDialogBottomNav>

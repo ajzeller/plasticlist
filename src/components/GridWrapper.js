@@ -116,6 +116,7 @@ class GridWrapper extends React.Component {
             annualFeeFirstYear={edge.node.data.annualFeeFirstYear}
             adjustedAnnualFee={edge.node.data.adjustedAnnualFee}
             cardType={edge.node.data.cardType}
+            cashBack={edge.node.data.cashBackPercent}
             cardRank={i + 1}
             cardDescription={edge.node.data.perks}
             imgName={edge.node.data.imgName}
