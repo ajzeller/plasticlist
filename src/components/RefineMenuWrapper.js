@@ -151,6 +151,15 @@ class RefineMenuWrapper extends React.Component {
                     <RefineDialog 
                         open={this.state.open}
                         onClose={this.handleClose}
+                        onBonusChange = {this.props.onBonusChange}
+                        onFeeChange = {this.props.onFeeChange}
+                        onSpendingChange = {this.props.onSpendingChange}
+                        onCashBackChange = {this.props.onCashBackChange}
+                        bonusBounds = {this.props.bonusBounds}
+                        feeBounds = {this.props.feeBounds}
+                        spendingBounds = {this.props.spendingBounds}
+                        cashBackBounds = {this.props.cashBackBounds}
+
                     />
                 </RefineMenuContainerInner>
             </RefineMenuContainer>

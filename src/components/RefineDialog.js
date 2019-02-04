@@ -127,7 +127,11 @@ const LogoImage = styled.img`
 class RefineDialog extends React.Component {
     constructor(props) {
         super(props)
-
+        this.state = {
+            spendingBounds: [ 0 , 10000 ],
+            cashBackBounds: [ 0 , 10 ],
+        }
+ 
     }
 
     handleToggle = value => {
@@ -139,6 +143,19 @@ class RefineDialog extends React.Component {
     handleClose = () => {
         this.props.onClose();
     };
+
+    handleSliderChange(state) {
+        console.log(state)
+    }
+
+    // onBonusChange = (value) => {
+    //     console.log(value);
+    //     this.setState({
+    //       bonusBounds: value
+    //     });
+    //   } 
+
+    
 
     render() {
             const { onClose, ...other } = this.props;
@@ -189,11 +206,11 @@ class RefineDialog extends React.Component {
 
                     <RefineItem>
                         Bonus Value
-                        <SliderContainer>
+                        <SliderContainer >
                             <Range 
                                 min={0} 
                                 max={2000} 
-                                defaultValue={[0, 2000]} 
+                                defaultValue={this.props.bonusBounds} 
                                 marks={{ 0:0, 500: '$500', 1000: "$1k", 1500: '$1.5k', 2000: '$2k' }} 
                                 tipFormatter={value => `${value}`} 
                                 // step={null}
@@ -202,6 +219,8 @@ class RefineDialog extends React.Component {
                                 railStyle={[ { backgroundColor: theme.primary } ]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 // handle={handle}
+                                onChange ={ this.props.onBonusChange}
+                                // onChange={() => { this.handleSliderChange(this.state.bounds[1]) } }
                             />
                         </SliderContainer>
 
@@ -213,14 +232,14 @@ class RefineDialog extends React.Component {
                             <Range 
                                 min={0} 
                                 max={1000} 
-                                defaultValue={[0, 1000]} 
+                                defaultValue={this.props.feeBounds} 
                                 marks={{ 0:0, 250: '$250', 500: '$500', 750: '$750', 1000: '$1k' }} 
                                 // tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[{ backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
-
+                                onChange ={ this.props.onFeeChange}
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
 
 
@@ -235,13 +254,14 @@ class RefineDialog extends React.Component {
                             <Range 
                                 min={0} 
                                 max={10000} 
-                                defaultValue={[0, 10000]} 
+                                defaultValue={this.props.spendingBounds} 
                                 marks={{ 0:0 , 2500: "2.5k", 5000: "5k", 7500: "7.5k", 10000: "10k" }} 
                                 tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
+                                onChange ={ this.props.onSpendingChange}
                             />
                         </SliderContainer>
 
@@ -252,14 +272,15 @@ class RefineDialog extends React.Component {
                         <SliderContainer>
                             <Range 
                                 min={0} 
-                                max={10} 
-                                defaultValue={[0, 10]} 
-                                marks={{ 0:0 , 2: "2%", 4: "4%", 6: "6%", 8: "8%", 10: '10%' }} 
+                                max={50} 
+                                defaultValue={this.props.cashBackBounds} 
+                                marks={{ 0:0 , 10: "1%", 20: "2%", 30: "3%", 40: "4%", 50: '5%' }} 
                                 tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 railStyle={[ { backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
+                                onChange ={ this.props.onCashBackChange}
                             />
                         </SliderContainer>
 

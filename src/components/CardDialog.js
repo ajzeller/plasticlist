@@ -44,6 +44,8 @@ const CardDialogInner = styled.div`
     /* margin: 0 0 70px 0; */
     height: 100%;
     background-color: ${theme.mediumGreyBackground};
+    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5c5c5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+
 
 
 `
@@ -81,8 +83,8 @@ const IssuerLogo = styled.img`
 `
 
 const LayeredBackground = styled.div`
-    background-color: ${theme.mediumGreyBackground};
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5c5c5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
+    /* background-color: ${theme.mediumGreyBackground}; */
+    /* background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5c5c5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); */
     
     top: 130px;
     z-index: 200;

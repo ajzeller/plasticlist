@@ -21,8 +21,13 @@ class DataWrapper extends React.Component {
     super(props)
     this.state = {
         data: this.props.data,
-        refinedData: this.props.data,
-        sortBy: 'plasticScoreNormalized'
+        sortedData: this.props.data,
+        filteredData: this.props.data,
+        sortBy: 'plasticScoreNormalized',
+        bonusBounds: [ 0 , 2000 ],
+        feeBounds: [ 0 , 1000],
+        spendingBounds: [ 0 , 10000 ],
+        cashBackBounds: [ 0 , 50 ],
     }
     this.compareBy.bind(this);
     this.sortBy.bind(this);
@@ -47,12 +52,52 @@ class DataWrapper extends React.Component {
       // orders from least to greatest
       
   }
+
+  onBonusChange = (value) => {
+    console.log(value);
+    this.setState({
+      bonusBounds: value
+    },
+    this.filterCards()
+    );
+  }
+
+  onFeeChange = (value) => {
+    console.log(value);
+    this.setState({
+        feeBounds: value
+    },
+    this.filterCards()
+    );
+} 
+
+onSpendingChange = (value) => {
+  console.log(value);
+  this.setState({
+      spendingBounds: value
+  },
+  this.filterCards()
+  );
+}  
+
+onCashBackChange = (value) => {
+  console.log(value);
+  this.setState({
+      cashBackBounds: value
+  },
+  this.filterCards()
+  );
+}  
+
+  onReset() {
+    
+  }
  
   sortBy(key) {
-    let arrayCopy = [...this.props.data];
+    let arrayCopy = this.state.filteredData;
     console.log(key)
     arrayCopy.sort(this.compareBy(key));
-    this.setState({refinedData: arrayCopy}
+    this.setState({filteredData: arrayCopy}
       );
   }
 
@@ -60,6 +105,63 @@ class DataWrapper extends React.Component {
     this.setState({ [event.target.name]: event.target.value }, 
     () => { this.sortBy(this.state.sortBy) }
     )
+  }
+
+  
+
+  filterCards() {
+
+    const filterConditions = 
+      {
+        bonusBounds: this.state.bonusBounds,
+        feeBounds: this.state.feeBounds,
+        spendingBounds: this.state.spendingBounds,
+        cashBackBounds: this.state.cashBackBounds,
+      }
+
+    let arrayCopy = this.state.data.filter(function(obj){
+      for ( var key in filterConditions) {
+        switch (key) {
+          case "bonusBounds":
+            if(obj.node.data.bonusValue < filterConditions.bonusBounds[0] ||
+              obj.node.data.bonusValue > filterConditions.bonusBounds[1]) {
+              return false
+            }          
+          break
+
+          case "feeBounds": 
+            if (obj.node.data.annualFeeAfterFirstYear < filterConditions.feeBounds[0] ||
+              obj.node.data.annualFeeAfterFirstYear > filterConditions.feeBounds[1]) {
+              return false
+            }
+          break
+
+          case "spendingBounds":
+            if (obj.node.data.requiredSpend < filterConditions.spendingBounds[0] ||
+              obj.node.data.requiredSpend > filterConditions.spendingBounds[1]) {
+              return false
+            }
+          break
+
+          case "cashBackBounds":
+            if (obj.node.data.cashBackPercent*10 < filterConditions.cashBackBounds[0] ||
+              obj.node.data.cashBackPercent*10 > filterConditions.cashBackBounds[1]) {
+              return false
+            }
+          break
+        }
+        // if condition not met return false
+    }
+
+      return true
+
+    });
+    this.setState(
+      {filteredData: arrayCopy},
+
+      () => { this.sortBy(this.state.sortBy) }
+      )
+
   }
 
   componentDidMount() {
@@ -74,9 +176,20 @@ class DataWrapper extends React.Component {
         <ThemeProvider theme={theme}>
           <MainContainer>
             <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-            <RefineMenuWrapper sortBy={this.state.sortBy} handleChange={this.handleSort} />
-            
-            <GridWrapper data={this.state.refinedData} sortBy={this.state.sortBy} ></GridWrapper>
+            <RefineMenuWrapper 
+              sortBy={this.state.sortBy} 
+              handleChange={this.handleSort} 
+              onBonusChange = {this.onBonusChange}
+              onFeeChange = {this.onFeeChange}
+              onSpendingChange = {this.onSpendingChange}
+              onCashBackChange = {this.onCashBackChange}
+              bonusBounds = {this.state.bonusBounds}
+              feeBounds = {this.state.feeBounds}
+              spendingBounds = {this.state.spendingBounds}
+              cashBackBounds = {this.state.cashBackBounds}
+              />
+
+            <GridWrapper data={this.state.filteredData} sortBy={this.state.sortBy} ></GridWrapper>
             {this.props.children}
           </MainContainer>
         </ThemeProvider>
