@@ -28,6 +28,8 @@ class DataWrapper extends React.Component {
         feeBounds: [ 0 , 1000],
         spendingBounds: [ 0 , 10000 ],
         cashBackBounds: [ 0 , 50 ],
+        foreignTxFeeWaived: false,
+        showAdjustedAnnualFee: false,
     }
     this.compareBy.bind(this);
     this.sortBy.bind(this);
@@ -54,7 +56,7 @@ class DataWrapper extends React.Component {
   }
 
   onBonusChange = (value) => {
-    console.log(value);
+    // console.log(value);
     this.setState({
       bonusBounds: value
     },
@@ -63,7 +65,7 @@ class DataWrapper extends React.Component {
   }
 
   onFeeChange = (value) => {
-    console.log(value);
+    // console.log(value);
     this.setState({
         feeBounds: value
     },
@@ -72,7 +74,7 @@ class DataWrapper extends React.Component {
 } 
 
 onSpendingChange = (value) => {
-  console.log(value);
+  // console.log(value);
   this.setState({
       spendingBounds: value
   },
@@ -81,7 +83,7 @@ onSpendingChange = (value) => {
 }  
 
 onCashBackChange = (value) => {
-  console.log(value);
+  // console.log(value);
   this.setState({
       cashBackBounds: value
   },
@@ -89,13 +91,25 @@ onCashBackChange = (value) => {
   );
 }  
 
+handleSwitchToggle = (id) => {
+  this.setState( {
+    [id]: !this.state[id],
+  }, () => { 
+    // console.log(` toggle value: ${this.state[id]} `)
+    this.filterCards()
+  })
+
+  console.log(id)
+
+}
+
   onReset() {
     
   }
  
   sortBy(key) {
     let arrayCopy = this.state.filteredData;
-    console.log(key)
+    // console.log(key)
     arrayCopy.sort(this.compareBy(key));
     this.setState({filteredData: arrayCopy}
       );
@@ -117,6 +131,7 @@ onCashBackChange = (value) => {
         feeBounds: this.state.feeBounds,
         spendingBounds: this.state.spendingBounds,
         cashBackBounds: this.state.cashBackBounds,
+        foreignTxFeeWaived: this.state.foreignTxFeeWaived,
       }
 
     let arrayCopy = this.state.data.filter(function(obj){
@@ -149,6 +164,18 @@ onCashBackChange = (value) => {
               return false
             }
           break
+
+          case "foreignTxFeeWaived":
+          console.log(obj.node.data.cardName)
+            if ( filterConditions.foreignTxFeeWaived ){
+              console.log(filterConditions.foreignTxFeeWaived)
+              if (!obj.node.data.foreignTxFeeWaived) {
+                return false
+              }
+            }
+
+          break
+
         }
         // if condition not met return false
     }
@@ -187,6 +214,9 @@ onCashBackChange = (value) => {
               feeBounds = {this.state.feeBounds}
               spendingBounds = {this.state.spendingBounds}
               cashBackBounds = {this.state.cashBackBounds}
+              handleSwitchToggle = {this.handleSwitchToggle}
+              foreignTxFeeWaived = {this.state.foreignTxFeeWaived}
+              showAdjustedAnnualFee = {this.state.showAdjustedAnnualFee}
               />
 
             <GridWrapper data={this.state.filteredData} sortBy={this.state.sortBy} ></GridWrapper>

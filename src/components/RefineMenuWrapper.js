@@ -155,10 +155,15 @@ class RefineMenuWrapper extends React.Component {
                         onFeeChange = {this.props.onFeeChange}
                         onSpendingChange = {this.props.onSpendingChange}
                         onCashBackChange = {this.props.onCashBackChange}
+                        handleSwitchToggle = {this.props.handleSwitchToggle}
+
                         bonusBounds = {this.props.bonusBounds}
                         feeBounds = {this.props.feeBounds}
                         spendingBounds = {this.props.spendingBounds}
                         cashBackBounds = {this.props.cashBackBounds}
+                        foreignTxFeeWaived = {this.props.foreignTxFeeWaived}
+                        showAdjustedAnnualFee = {this.props.showAdjustedAnnualFee}
+
 
                     />
                 </RefineMenuContainerInner>

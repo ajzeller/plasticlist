@@ -134,11 +134,7 @@ class RefineDialog extends React.Component {
  
     }
 
-    handleToggle = value => {
-        // this.props.onSwitchClose(value)
-        console.log(value)
-
-      }
+ 
 
     handleClose = () => {
         this.props.onClose();
@@ -287,11 +283,11 @@ class RefineDialog extends React.Component {
                     </RefineItem>
                     
                     <RefineItemSwitch>
-                        No Foreign TX Fees <SwitchWrapper value="foreignTxFeeWaived" color="primary" onToggle={this.handleToggle} />
+                        No Foreign TX Fees <SwitchWrapper checked={this.props.foreignTxFeeWaived} id="foreignTxFeeWaived" color="primary" onToggle={() => {this.props.handleSwitchToggle("foreignTxFeeWaived")}} />
                     </RefineItemSwitch>
 
                     <RefineItemSwitch>
-                        Show Adjusted Annual Fee <SwitchWrapper value="showAdjustedAnnualFee" color="primary" onToggle={this.handleToggle} />
+                        Show Adjusted Annual Fee <SwitchWrapper checked={this.props.showAdjustedAnnualFee} id="showAdjustedAnnualFee" color="primary" onToggle={() => {this.props.handleSwitchToggle("showAdjustedAnnualFee")}} />
                         {/* <Tooltip disableFocusListener title="some info">
                             <IconButton>
                                 <InfoIcon />

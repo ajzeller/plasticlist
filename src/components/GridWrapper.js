@@ -98,9 +98,9 @@ class GridWrapper extends React.Component {
 
     return (
       <GridContainer>
-        {console.log('testing props')}
+        {/* {console.log('testing props')} */}
 
-        {console.log(this.props.data)}
+        {/* {console.log(this.props.data)} */}
 
         {this.props.data.map((edge, i) => (
           <CardPanel

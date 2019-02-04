@@ -122,6 +122,7 @@ const IconButtonClose = styled(IconButton)`
 
 const DialogHeader = styled.div`
     display: grid;
+    padding: 10px;
     justify-items: flex-end;
     background-color: ${theme.white};
     /* height: 8vh; */
@@ -357,7 +358,7 @@ class CardDialog extends React.Component {
         
         const networkLogo = this.NetworkIconImg(this.props.network)
         const issuerLogo = this.IssuerImg(this.props.cardIssuer)
-        console.log(networkLogo)
+        // console.log(networkLogo)
 
         return (
 
