@@ -61,10 +61,10 @@ class ToggleNetwork extends React.Component {
     render() {
         return (
                 <NetworkIconsContainer>
-                    <Button onClick={ () => {this.handleClick("Visa")}}><CardBrandIcon src={this.state.Visa ? VisaIcon : VisaIconUnselected} /></Button>
-                    <Button onClick={ () => {this.handleClick("Mastercard")}}><CardBrandIcon src={this.state.Mastercard ? MastercardIcon : MastercardIconUnselected} /></Button>
-                    <Button onClick={ () => {this.handleClick("Amex")}}><CardBrandIcon src={this.state.Amex ? AmexIcon : AmexIconUnselected} /></Button>
-                    <Button onClick={ () => {this.handleClick("Discover")}}><CardBrandIcon src={this.state.Discover ? DiscoverIcon : DiscoverIconUnselected} /></Button>
+                    <Button id="Visa" onClick={ () => {this.props.handleNetworkToggle("Visa") } }><CardBrandIcon src={this.props.Visa ? VisaIcon : VisaIconUnselected} /></Button>
+                    <Button id="Mastercard" onClick={ () => {this.props.handleNetworkToggle("Mastercard") } }><CardBrandIcon src={this.props.Mastercard ? MastercardIcon : MastercardIconUnselected} /></Button>
+                    <Button id="Amex" onClick={ () => {this.props.handleNetworkToggle("Amex") } }><CardBrandIcon src={this.props.Amex ? AmexIcon : AmexIconUnselected} /></Button>
+                    <Button id="Discover" onClick={ () => {this.props.handleNetworkToggle("Discover") } }><CardBrandIcon src={this.props.Discover ? DiscoverIcon : DiscoverIconUnselected} /></Button>
                 </NetworkIconsContainer>
         )
     }

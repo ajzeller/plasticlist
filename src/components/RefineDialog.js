@@ -184,7 +184,14 @@ class RefineDialog extends React.Component {
                     <RefineItem>
                         Network
 
-                        <ToggleNetwork />
+                        <ToggleNetwork 
+                            Visa = {this.props.Visa}
+                            Mastercard = {this.props.Mastercard}
+                            Amex = {this.props.Amex}
+                            Discover = {this.props.Discover} 
+                            handleNetworkToggle = {this.props.handleNetworkToggle}
+
+                        />
 
                         {/* <NetworkIconsContainer>
                             <CardBrandIcon src={VisaIcon} />

@@ -156,6 +156,7 @@ class RefineMenuWrapper extends React.Component {
                         onSpendingChange = {this.props.onSpendingChange}
                         onCashBackChange = {this.props.onCashBackChange}
                         handleSwitchToggle = {this.props.handleSwitchToggle}
+                        handleNetworkToggle = {this.props.handleNetworkToggle}
 
                         bonusBounds = {this.props.bonusBounds}
                         feeBounds = {this.props.feeBounds}
@@ -163,6 +164,10 @@ class RefineMenuWrapper extends React.Component {
                         cashBackBounds = {this.props.cashBackBounds}
                         foreignTxFeeWaived = {this.props.foreignTxFeeWaived}
                         showAdjustedAnnualFee = {this.props.showAdjustedAnnualFee}
+                        Visa = {this.props.Visa}
+                        Mastercard = {this.props.Mastercard}
+                        Amex = {this.props.Amex}
+                        Discover = {this.props.Discover}
 
 
                     />

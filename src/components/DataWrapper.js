@@ -30,6 +30,10 @@ class DataWrapper extends React.Component {
         cashBackBounds: [ 0 , 50 ],
         foreignTxFeeWaived: false,
         showAdjustedAnnualFee: false,
+        Visa: true,
+        Mastercard: true,
+        Amex: true,
+        Discover: true, 
     }
     this.compareBy.bind(this);
     this.sortBy.bind(this);
@@ -103,9 +107,21 @@ handleSwitchToggle = (id) => {
 
 }
 
-  onReset() {
+handleNetworkToggle = (id) => {
+  this.setState( {
+    [id]: !this.state[id],
+  }, () => { 
+    // console.log(` toggle value: ${this.state[id]} `)
+    this.filterCards()
+  })
+
+  console.log(id)
+
+}
+
+onReset() {
     
-  }
+}
  
   sortBy(key) {
     let arrayCopy = this.state.filteredData;
@@ -132,6 +148,12 @@ handleSwitchToggle = (id) => {
         spendingBounds: this.state.spendingBounds,
         cashBackBounds: this.state.cashBackBounds,
         foreignTxFeeWaived: this.state.foreignTxFeeWaived,
+        networks: {
+          VISA: this.state.Visa,
+          MasterCard: this.state.Mastercard,
+          AMEX: this.state.Amex,
+          Discover: this.state.Discover,        
+        }
       }
 
     let arrayCopy = this.state.data.filter(function(obj){
@@ -168,11 +190,21 @@ handleSwitchToggle = (id) => {
           case "foreignTxFeeWaived":
           console.log(obj.node.data.cardName)
             if ( filterConditions.foreignTxFeeWaived ){
-              console.log(filterConditions.foreignTxFeeWaived)
+              // console.log(filterConditions.foreignTxFeeWaived)
               if (!obj.node.data.foreignTxFeeWaived) {
                 return false
               }
             }
+
+          break
+
+          case "networks":
+            for (var networkOption in filterConditions.networks) {
+              if ( !filterConditions.networks[networkOption] && obj.node.data.network == networkOption ) {
+                return false
+              }
+            }
+
 
           break
 
@@ -210,13 +242,21 @@ handleSwitchToggle = (id) => {
               onFeeChange = {this.onFeeChange}
               onSpendingChange = {this.onSpendingChange}
               onCashBackChange = {this.onCashBackChange}
+              handleNetworkToggle = {this.handleNetworkToggle}
+              handleSwitchToggle = {this.handleSwitchToggle}
+
               bonusBounds = {this.state.bonusBounds}
               feeBounds = {this.state.feeBounds}
+
               spendingBounds = {this.state.spendingBounds}
               cashBackBounds = {this.state.cashBackBounds}
-              handleSwitchToggle = {this.handleSwitchToggle}
               foreignTxFeeWaived = {this.state.foreignTxFeeWaived}
               showAdjustedAnnualFee = {this.state.showAdjustedAnnualFee}
+              Visa = {this.state.Visa}
+              Mastercard = {this.state.Mastercard}
+              Amex = {this.state.Amex}
+              Discover = {this.state.Discover}
+
               />
 
             <GridWrapper data={this.state.filteredData} sortBy={this.state.sortBy} ></GridWrapper>
