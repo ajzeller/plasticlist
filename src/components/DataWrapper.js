@@ -24,10 +24,10 @@ class DataWrapper extends React.Component {
         sortedData: this.props.data,
         filteredData: this.props.data,
         sortBy: 'plasticScoreNormalized',
-        bonusBounds: [ 0 , 2000 ],
-        feeBounds: [ 0 , 1000],
-        spendingBounds: [ 0 , 10000 ],
-        cashBackBounds: [ 0 , 50 ],
+        bonusBounds: [ -1 , 2000 ],
+        feeBounds: [ -1 , 1000],
+        spendingBounds: [ -1 , 10000 ],
+        cashBackBounds: [ -1 , 50 ],
         foreignTxFeeWaived: false,
         showAdjustedAnnualFee: false,
         Visa: true,
@@ -65,36 +65,36 @@ class DataWrapper extends React.Component {
     // console.log(value);
     this.setState({
       bonusBounds: value
-    },
-    this.filterCards()
-    );
+    }, () => {
+      this.filterCards()
+    })
   }
 
   onFeeChange = (value) => {
     // console.log(value);
     this.setState({
         feeBounds: value
-    },
-    this.filterCards()
-    );
+    }, () => {
+      this.filterCards()
+    })
 } 
 
 onSpendingChange = (value) => {
   // console.log(value);
   this.setState({
       spendingBounds: value
-  },
-  this.filterCards()
-  );
+  }, () => {
+    this.filterCards()
+  })
 }  
 
 onCashBackChange = (value) => {
   // console.log(value);
   this.setState({
       cashBackBounds: value
-  },
-  this.filterCards()
-  );
+  }, () => {
+    this.filterCards()
+  })
 }  
 
 handleSwitchToggle = (id) => {
