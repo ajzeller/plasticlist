@@ -34,6 +34,8 @@ class DataWrapper extends React.Component {
         Mastercard: true,
         Amex: true,
         Discover: true, 
+        personalCard: true,
+        businessCard: true,
     }
     this.compareBy.bind(this);
     this.sortBy.bind(this);
@@ -153,6 +155,10 @@ onReset() {
           MasterCard: this.state.Mastercard,
           AMEX: this.state.Amex,
           Discover: this.state.Discover,        
+        },
+        cardTypes: {
+          Personal: this.state.personalCard,
+          Business: this.state.businessCard,
         }
       }
 
@@ -205,7 +211,14 @@ onReset() {
               }
             }
 
+          break
 
+          case "cardTypes":
+            for (var cardType in filterConditions.cardTypes) {
+              if ( !filterConditions.cardTypes[cardType] && obj.node.data.cardType == cardType ) {
+                return false
+              }
+            }
           break
 
         }
@@ -256,10 +269,16 @@ onReset() {
               Mastercard = {this.state.Mastercard}
               Amex = {this.state.Amex}
               Discover = {this.state.Discover}
+              personalCard = {this.state.personalCard}
+              businessCard = {this.state.businessCard}
 
               />
 
-            <GridWrapper data={this.state.filteredData} sortBy={this.state.sortBy} ></GridWrapper>
+            <GridWrapper 
+              data={this.state.filteredData} 
+              sortBy={this.state.sortBy} 
+              showAdjustedAnnualFee = {this.state.showAdjustedAnnualFee}              
+              ></GridWrapper>
             {this.props.children}
           </MainContainer>
         </ThemeProvider>

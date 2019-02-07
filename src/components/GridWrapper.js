@@ -120,6 +120,7 @@ class GridWrapper extends React.Component {
             cardRank={i + 1}
             cardDescription={edge.node.data.perks}
             imgName={edge.node.data.imgName}
+            showAdjustedAnnualFee = {this.props.showAdjustedAnnualFee}
 
           />
         ))}

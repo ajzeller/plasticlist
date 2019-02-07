@@ -202,6 +202,11 @@ class RefineDialog extends React.Component {
 
                     </RefineItem>
 
+                    <RefineItemSwitch>
+                        Personal Card<SwitchWrapper checked={this.props.personalCard} id="personal" color="primary" onToggle={() => {this.props.handleSwitchToggle("personalCard")}} />
+                        Business Card<SwitchWrapper checked={this.props.businessCard} id="business" color="primary" onToggle={() => {this.props.handleSwitchToggle("businessCard")}} />
+                    </RefineItemSwitch>
+
                     <RefineItem>
                         Card Issuer
                         <SelectIssuer />

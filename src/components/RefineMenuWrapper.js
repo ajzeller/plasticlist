@@ -168,6 +168,8 @@ class RefineMenuWrapper extends React.Component {
                         Mastercard = {this.props.Mastercard}
                         Amex = {this.props.Amex}
                         Discover = {this.props.Discover}
+                        personalCard = {this.props.personalCard}
+                        businessCard = {this.props.businessCard}
 
 
                     />
