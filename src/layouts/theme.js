@@ -28,6 +28,7 @@ const theme = {
     chaseInk: 'linear-gradient( #117ACA, #0062AC)',
     citi: 'linear-gradient(#D9261C, #B71F16)',
     discover: 'linear-gradient( #F9A021, #DD8D1C)',
+    discoverBlue: 'linear-gradient( #7CC7E2, #3D7992)',
     amexGold: 'linear-gradient(#E0CA7E,#C8A324)',
     amexPlatinum:'linear-gradient(#636364, #4E4E4E)',
     capitalOneSparkBiz: 'linear-gradient(#D9261C, #B71F16)',
@@ -40,6 +41,8 @@ const theme = {
     amexBlue: 'linear-gradient(#5E82A0, #252888)',
     amexPropel: 'linear-gradient(#D91F37, #8B1841)',
     capitalOneSavor: 'linear-gradient(#E9A97E, #B6603D)',
+    united: 'linear-gradient(#3D4E64, #3D495D)', 
+    capitalOneJourney: 'linear-gradient(#C55154, #844548)', 
     
 
 
