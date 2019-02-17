@@ -43,6 +43,8 @@ const theme = {
     capitalOneSavor: 'linear-gradient(#E9A97E, #B6603D)',
     united: 'linear-gradient(#3D4E64, #3D495D)', 
     capitalOneJourney: 'linear-gradient(#C55154, #844548)', 
+    capitalOneSparkMiles: 'linear-gradient( #006DAE, #001E4C)',
+    capitalOneSparkCash: 'linear-gradient( #005B34, #00220F)',
     
 
 

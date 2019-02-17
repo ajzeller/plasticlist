@@ -1,5 +1,6 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link , withPrefix } from 'gatsby'
+
 import styled, { css }  from 'styled-components'
 import theme from '../layouts/theme'
 import { CcVisa, CcAmex, CcDiscover, CcMastercard } from 'styled-icons/fa-brands'
@@ -11,6 +12,7 @@ import Amex from '../images/amex.svg'
 import CardDialog from '../components/CardDialog'
 
 import media from '../layouts/media'
+import Options, { NetworkOptions, IssuerOptions } from '../data/Options'
 
 const panelBackgroundColor = (props) => {
     return props.theme[props.cardColor]
@@ -165,12 +167,12 @@ const CardName = styled.div`
 
 const ContainerSpend = styled.div`
     /* font-size: 1rem; */
-    text-transform: uppercase;
     color: ${theme.white};
 `
 
 const Label = styled.span`
     color: ${theme.greyText};
+    /* text-transform: uppercase; */
     font-size: 0.8em;
     font-weight: 700;
 `
@@ -233,6 +235,14 @@ const NetWorkIcon = styled.img`
     margin: 2px auto 5px auto;
 `
 
+const IssuerLogo = styled.img`
+    max-width: 50px;
+    margin: 0px 10px 0px 0px;
+    align-self: flex-end;
+    border-radius: 5px;
+    background-color: white;
+`
+
 class CardPanel extends React.Component {
     constructor(props){
         super(props)
@@ -252,15 +262,28 @@ class CardPanel extends React.Component {
         this.setState({ open: false });
       };
 
+      IssuerImg(issuer) {
+        const optionQuery = IssuerOptions.filter(option => option.value === issuer )
+        return optionQuery[0].img_name
+    }
+
     render(){
+
+        const issuerLogo = this.IssuerImg(this.props.cardIssuer)
+
         return(
 
             <PanelWrapper>
                 <Panel cardColor = {this.props.cardColor} onClick={() => this.handlePanelClick()}>
                     <CardUpper >
                         <CardRank>{this.props.cardRank}</CardRank>
+
+
                         
-                        <CardIssuer>  <span>  {this.props.cardIssuer} </span></CardIssuer>
+                        <CardIssuer>  
+                            {/* <IssuerLogo src={withPrefix(`/img/issuers/${issuerLogo}.png`)} /> */}
+                            <span>{this.props.cardIssuer}</span>
+                        </CardIssuer>
                     </CardUpper>
     
                         <CardName><span>{this.props.cardName}</span></CardName>
@@ -268,7 +291,7 @@ class CardPanel extends React.Component {
                     <CardLower >
                         <ContainerCardLowerLeft>
                             <ContainerSpend>
-                                    <Label>Spend</Label> ${this.props.requiredSpend/1000}k                        
+                                    <Label>SPEND</Label> ${this.props.requiredSpend/1000}k                        
                             </ContainerSpend>
     
                             <ContainerBonus>
