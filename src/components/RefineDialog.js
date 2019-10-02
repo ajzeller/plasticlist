@@ -186,7 +186,8 @@ class RefineDialog extends React.Component {
                 <DialogInner>
                     
                     <DialogHeader>
-                        <LogoImage src={LogoBlue} />
+                        {/* <LogoImage src={LogoBlue} /> */}
+                        <div></div>
                         <IconButtonClose color="inherit" onClick={this.handleClose} aria-label="Close">
                             <ExpandMoreIcon />
                         </IconButtonClose>
@@ -222,7 +223,7 @@ class RefineDialog extends React.Component {
 
                     <RefineItem>
                         <RefineItemLabel>Bonus Value</RefineItemLabel>
-                        {/* <SliderContainer >
+                        <SliderContainer >
                             <Range 
                                 min={0} 
                                 max={2000} 
@@ -232,19 +233,19 @@ class RefineDialog extends React.Component {
                                 // step={null}
                                 trackStyle={[ { backgroundColor: theme.primary } , { borderColor: theme.primary } ]}
                                 // activeDotStyle={[{ borderColor: theme.primary } , { borderColor: theme.primary }]}
-                                railStyle={[ { backgroundColor: theme.primary } ]}
+                                // railStyle={[ { backgroundColor: theme.primary } ]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 // handle={handle}
                                 onChange ={ this.props.onBonusChange}
                                 // onChange={() => { this.handleSliderChange(this.state.bounds[1]) } }
                             />
-                        </SliderContainer> */}
+                        </SliderContainer>
 
                     </RefineItem>
 
                     <RefineItem>
                         <RefineItemLabel>Annual Fee</RefineItemLabel>
-                        {/* <SliderContainer>
+                        <SliderContainer>
                             <Range 
                                 min={0} 
                                 max={1000} 
@@ -253,20 +254,20 @@ class RefineDialog extends React.Component {
                                 // tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
-                                railStyle={[{ backgroundColor: theme.primary }]}
+                                // railStyle={[{ backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 onChange ={ this.props.onFeeChange}
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
 
 
                             />
-                        </SliderContainer> */}
+                        </SliderContainer>
 
                     </RefineItem>
 
                     <RefineItem>
                         <RefineItemLabel>Minimum Required Spending</RefineItemLabel>
-                        {/* <SliderContainer>
+                        <SliderContainer>
                             <Range 
                                 min={0} 
                                 max={10000} 
@@ -275,17 +276,17 @@ class RefineDialog extends React.Component {
                                 tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
-                                railStyle={[ { backgroundColor: theme.primary }]}
+                                // railStyle={[ { backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 onChange ={ this.props.onSpendingChange}
                             />
-                        </SliderContainer> */}
+                        </SliderContainer>
 
                     </RefineItem>
 
                     <RefineItem>
                         <RefineItemLabel>Cash Back</RefineItemLabel>
-                        {/* <SliderContainer>
+                        <SliderContainer>
                             <Range 
                                 min={0} 
                                 max={50} 
@@ -294,11 +295,11 @@ class RefineDialog extends React.Component {
                                 tipFormatter={value => `${value}%`} 
                                 // step={null} 
                                 trackStyle={[ { backgroundColor: theme.primary }]}
-                                railStyle={[ { backgroundColor: theme.primary }]}
+                                // railStyle={[ { backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 onChange ={ this.props.onCashBackChange}
                             />
-                        </SliderContainer> */}
+                        </SliderContainer>
 
                     </RefineItem>
                     
