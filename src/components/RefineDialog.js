@@ -31,6 +31,7 @@ import withMobileDialog from '@material-ui/core/withMobileDialog';
 import styled, {ThemeProvider} from 'styled-components'
 import theme from '../layouts/theme'
 import media from '../layouts/media'
+import MuiMultipleSelect from '../components/MuiMultipleSelect';
 
 import 'rc-slider/assets/index.css'
 import 'rc-tooltip/assets/bootstrap.css';
@@ -39,7 +40,9 @@ import Slider from 'rc-slider'
 // import Tooltip from 'rc-tooltip';
 import Tooltip from '@material-ui/core/Tooltip';
 
-import { Select } from 'antd';
+import Select from 'react-select';
+
+import { IssuerOptions } from '../data/Options'
 
 const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
@@ -61,11 +64,15 @@ const Handle = Slider.Handle;
 //   };
 
 const RefineItem = styled.div`
+    
+    margin: 0px 0 30px 0;
+    padding: 0 0 0px 0;
+`
+
+const RefineItemLabel = styled.span`
     text-transform: uppercase;
     font-size: 12px;
     font-weight: 600;
-    margin: 0px 0 30px 0;
-    padding: 0 0 0px 0;
 `
 
 const RefineItemSwitch = styled(RefineItem)`
@@ -122,6 +129,10 @@ const IconButtonClose = styled(IconButton)`
 const LogoImage = styled.img`
     height: 35px;
     margin: 0;
+`
+
+const SelectIssuerContainer = styled.div`
+    margin: 10px 0 0 0;
 `
 
 class RefineDialog extends React.Component {
@@ -182,7 +193,7 @@ class RefineDialog extends React.Component {
                     </DialogHeader>
 
                     <RefineItem>
-                        Network
+                        <RefineItemLabel>Network</RefineItemLabel>
 
                         <ToggleNetwork 
                             Visa = {this.props.Visa}
@@ -203,18 +214,15 @@ class RefineDialog extends React.Component {
                     </RefineItem>
 
                     <RefineItemSwitch>
-                        Personal Card<SwitchWrapper checked={this.props.personalCard} id="personal" color="primary" onToggle={() => {this.props.handleSwitchToggle("personalCard")}} />
-                        Business Card<SwitchWrapper checked={this.props.businessCard} id="business" color="primary" onToggle={() => {this.props.handleSwitchToggle("businessCard")}} />
+                        <RefineItemLabel>Personal Card</RefineItemLabel><SwitchWrapper checked={this.props.personalCard} id="personal" color="primary" onToggle={() => {this.props.handleSwitchToggle("personalCard")}} />
+                        <RefineItemLabel>Business Card</RefineItemLabel><SwitchWrapper checked={this.props.businessCard} id="business" color="primary" onToggle={() => {this.props.handleSwitchToggle("businessCard")}} />
                     </RefineItemSwitch>
 
-                    <RefineItem>
-                        Card Issuer
-                        <SelectIssuer />
-                    </RefineItem>
+                    
 
                     <RefineItem>
-                        Bonus Value
-                        <SliderContainer >
+                        <RefineItemLabel>Bonus Value</RefineItemLabel>
+                        {/* <SliderContainer >
                             <Range 
                                 min={0} 
                                 max={2000} 
@@ -230,13 +238,13 @@ class RefineDialog extends React.Component {
                                 onChange ={ this.props.onBonusChange}
                                 // onChange={() => { this.handleSliderChange(this.state.bounds[1]) } }
                             />
-                        </SliderContainer>
+                        </SliderContainer> */}
 
                     </RefineItem>
 
                     <RefineItem>
-                        Annual Fee
-                        <SliderContainer>
+                        <RefineItemLabel>Annual Fee</RefineItemLabel>
+                        {/* <SliderContainer>
                             <Range 
                                 min={0} 
                                 max={1000} 
@@ -252,13 +260,13 @@ class RefineDialog extends React.Component {
 
 
                             />
-                        </SliderContainer>
+                        </SliderContainer> */}
 
                     </RefineItem>
 
                     <RefineItem>
-                        Minimum Required Spending
-                        <SliderContainer>
+                        <RefineItemLabel>Minimum Required Spending</RefineItemLabel>
+                        {/* <SliderContainer>
                             <Range 
                                 min={0} 
                                 max={10000} 
@@ -271,13 +279,13 @@ class RefineDialog extends React.Component {
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 onChange ={ this.props.onSpendingChange}
                             />
-                        </SliderContainer>
+                        </SliderContainer> */}
 
                     </RefineItem>
 
                     <RefineItem>
-                        Cash Back
-                        <SliderContainer>
+                        <RefineItemLabel>Cash Back</RefineItemLabel>
+                        {/* <SliderContainer>
                             <Range 
                                 min={0} 
                                 max={50} 
@@ -290,16 +298,16 @@ class RefineDialog extends React.Component {
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 onChange ={ this.props.onCashBackChange}
                             />
-                        </SliderContainer>
+                        </SliderContainer> */}
 
                     </RefineItem>
                     
                     <RefineItemSwitch>
-                        No Foreign TX Fees <SwitchWrapper checked={this.props.foreignTxFeeWaived} id="foreignTxFeeWaived" color="primary" onToggle={() => {this.props.handleSwitchToggle("foreignTxFeeWaived")}} />
+                        <RefineItemLabel>No Foreign TX Fees</RefineItemLabel> <SwitchWrapper checked={this.props.foreignTxFeeWaived} id="foreignTxFeeWaived" color="primary" onToggle={() => {this.props.handleSwitchToggle("foreignTxFeeWaived")}} />
                     </RefineItemSwitch>
 
                     <RefineItemSwitch>
-                        Show Adjusted Annual Fee <SwitchWrapper checked={this.props.showAdjustedAnnualFee} id="showAdjustedAnnualFee" color="primary" onToggle={() => {this.props.handleSwitchToggle("showAdjustedAnnualFee")}} />
+                        <RefineItemLabel>Show Adjusted Annual Fee</RefineItemLabel> <SwitchWrapper checked={this.props.showAdjustedAnnualFee} id="showAdjustedAnnualFee" color="primary" onToggle={() => {this.props.handleSwitchToggle("showAdjustedAnnualFee")}} />
                         {/* <Tooltip disableFocusListener title="some info">
                             <IconButton>
                                 <InfoIcon />
@@ -309,8 +317,18 @@ class RefineDialog extends React.Component {
                     </RefineItemSwitch>
 
                     <RefineItem>
-                        Rewards Program
-                        <SelectRewards />
+                        <RefineItemLabel>Card Issuer</RefineItemLabel>
+
+                        
+
+                        <SelectIssuer />
+                        {/* <MuiMultipleSelect /> */}
+
+                    </RefineItem>
+
+                    <RefineItem>
+                        <RefineItemLabel>Rewards Program</RefineItemLabel>
+                        <SelectRewards onRewardsChange = {this.props.onRewardsChange} />
                     </RefineItem>
                 </DialogInner>
             </DialogContainer>

@@ -20,6 +20,7 @@ const theme = {
     // theme colors
     
     primary: '#117ACA',
+    primaryGradient: 'linear-gradient(#117ACA, #0062AC)',
     secondary: '#4A4A4A',
 
     // cc colors
@@ -45,6 +46,8 @@ const theme = {
     capitalOneJourney: 'linear-gradient(#C55154, #844548)', 
     capitalOneSparkMiles: 'linear-gradient( #006DAE, #001E4C)',
     capitalOneSparkCash: 'linear-gradient( #005B34, #00220F)',
+    marriottBonvoyBoundless: 'linear-gradient( #062C44, #1D435A)',
+    hyatt: 'linear-gradient( #959BA2, #C0C7CD)',
     
 
 

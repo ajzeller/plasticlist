@@ -36,6 +36,24 @@ class DataWrapper extends React.Component {
         Discover: true, 
         personalCard: true,
         businessCard: true,
+        cardIssuer: {
+          'Chase': true,
+          'AMEX': true,
+          'Discover': true,
+          'CapitalOne': true,
+          'Barclays': true,
+          'Wells Fargo': true,
+          'Citi': true,
+          'Bank of America': true,
+        },
+        rewardsProgram: {
+          'ultimaterewards': true,
+          'membershiprewards': true,
+          'thankyoupoints': true,
+          'mileageplan': true,
+          'aadvantage': true,
+          'mileageplus': true,
+        }
     }
     this.compareBy.bind(this);
     this.sortBy.bind(this);
@@ -97,6 +115,67 @@ onCashBackChange = (value) => {
   })
 }  
 
+onRewardsChange = (value) => {
+  let programs = Object.values(value)
+  // console.log(programs)
+
+  this.setState({
+    rewardsProgram: {
+      ...this.state.rewardsProgram,
+      'ultimaterewards': 'updated'
+    }
+  })
+
+  Object.keys(this.state.rewardsProgram).forEach(key => {
+    this.setState({
+      rewardsProgram: {
+        ...this.state.rewardsProgram,
+        'ultimaterewards': key
+      }
+    },
+    console.log(key)
+    
+    )
+
+      
+
+  //   for (let id of value) {
+
+  //     console.log(id.value)
+
+  //     if (id.value == key) {
+  //       console.log(id.value + ' match')
+  //     //   this.setState({
+  //     //     rewardsProgram: {
+  //     //       [id.value]: true,
+  //     //     }
+  //     //   },
+  //     //   console.log(this.state.rewardsProgram)
+
+  //     // )
+
+  //     } else {
+  //       console.log(id.value + ' mismatch')
+  //   }
+  // }
+
+  console.log(this.state.rewardsProgram)
+
+    
+    // const id = value[key].value
+    // this.setState({
+    //   rewardsProgram: {
+    //     // ...this.state.rewardsProgram,
+    //     [id]: true
+    //   }
+    // },
+    // )
+    // console.log(key)
+    // console.log(value[key].value)
+  })
+  // console.log(value)
+}
+
 handleSwitchToggle = (id) => {
   this.setState( {
     [id]: !this.state[id],
@@ -116,8 +195,10 @@ handleNetworkToggle = (id) => {
     // console.log(` toggle value: ${this.state[id]} `)
     this.filterCards()
   })
-
   console.log(id)
+}
+
+onIssuerChange = (id) => {
 
 }
 
@@ -257,6 +338,7 @@ onReset() {
               onCashBackChange = {this.onCashBackChange}
               handleNetworkToggle = {this.handleNetworkToggle}
               handleSwitchToggle = {this.handleSwitchToggle}
+              onRewardsChange = {this.onRewardsChange}
 
               bonusBounds = {this.state.bonusBounds}
               feeBounds = {this.state.feeBounds}

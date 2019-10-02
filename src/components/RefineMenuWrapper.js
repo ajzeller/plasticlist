@@ -49,6 +49,7 @@ const RefineMenuContainerInner = styled.div`
     align-items: center;
     grid-template-columns: 100px 1fr;
     max-width: 450px;
+    height: auto;
     margin: auto;
 
     ${media.giant`max-width: 400px;`}
@@ -67,8 +68,8 @@ const RefineIcon = styled(TuneIcon)`
 `
 
 const dropdownStyle = {
-    margin: "0px 0px 0px 10px",
-    height: "50px"
+    margin: "0px 0px 0px 10px"
+    // height: "60px"
 }
 
 const FilledInputStyled = styled(FilledInput)`
@@ -112,8 +113,8 @@ class RefineMenuWrapper extends React.Component {
                 <RefineMenuContainerInner>
                     <Button onClick={() => this.handleSettingsClick()}>
                         <RefineIcon />
-                            Filter
-                        </Button>
+                        Filter
+                    </Button>
     
                     <FormControl variant="filled" className={classes.formControl} style={dropdownStyle} >
                         <InputLabel
@@ -130,12 +131,12 @@ class RefineMenuWrapper extends React.Component {
                             // value={this.state.sortBy}
                             onChange={this.props.handleChange}
                             input={
-                            <FilledInputStyled
-                                disableUnderline={true} 
-                                labelWidth={this.state.labelWidth}
-                                name="sortBy"
-                                id="filled-age-simple"
-                            />
+                                <FilledInputStyled
+                                    disableUnderline={true} 
+                                    labelWidth={this.state.labelWidth}
+                                    name="sortBy"
+                                    id="filled-age-simple"
+                                />
                             }
                         >
                             {/* <MenuItem value="">
@@ -157,6 +158,7 @@ class RefineMenuWrapper extends React.Component {
                         onCashBackChange = {this.props.onCashBackChange}
                         handleSwitchToggle = {this.props.handleSwitchToggle}
                         handleNetworkToggle = {this.props.handleNetworkToggle}
+                        onRewardsChange = {this.props.onRewardsChange}
 
                         bonusBounds = {this.props.bonusBounds}
                         feeBounds = {this.props.feeBounds}

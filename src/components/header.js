@@ -122,8 +122,10 @@ const styles = {
     flexGrow: 1,
   },
   menuButton: {
-    marginLeft: -12,
-    marginRight: 20,
+    marginLeft: 0,
+    marginRight: 0,
+    // marginLeft: -12,
+    // marginRight: 20,
   },
 };
 

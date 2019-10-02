@@ -6,6 +6,12 @@ import media from '../layouts/media'
 import CardPanel from '../components/CardPanel'
 import RefineMenuWrapper from '../components/RefineMenuWrapper'
 
+import Select from 'react-select';
+
+import { IssuerOptions } from '../data/Options'
+import SelectIssuer from '../components/SelectIssuer';
+
+
 const panelStyle = {
   border: '1px solid grey',
   borderRadius: '10px',
@@ -98,6 +104,7 @@ class GridWrapper extends React.Component {
 
     return (
       <GridContainer>
+
         {/* {console.log('testing props')} */}
 
         {/* {console.log(this.props.data)} */}
