@@ -19,7 +19,7 @@ const theme = {
     
     // theme colors
     
-    primary: '#117ACA',
+    primary: '#37A0FF',
     primaryGradient: 'linear-gradient(#117ACA, #0062AC)',
     secondary: '#4A4A4A',
 
@@ -73,10 +73,10 @@ const theme = {
 
     // shared styles
 
-    panelShadow: '0px 1px 7px 0px rgba(0, 0, 0, 0.25)',
+    panelShadow: '0px 0px 4px 0px rgba(0, 0, 0, 0.25)',
     panelShadowHover: '0px 3px 7px 0px rgba(0, 0, 0, 0.5)',
     panelTextShadow: '0px 3px 7px rgba(0, 0, 0, 0.25)',
-    panelRadius: '15px',
+    panelRadius: '5px',
 
 }
 

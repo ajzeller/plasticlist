@@ -43,9 +43,7 @@ const CardDialogInner = styled.div`
     /* padding: 10px; */
     /* margin: 0 0 70px 0; */
     height: 100%;
-    background-color: ${theme.mediumGreyBackground};
-    background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23c5c5c5' fill-opacity='0.2' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-
+    background-color: ${theme.greyPanelBackground};
 
 
 `
@@ -54,7 +52,7 @@ const CardDialogUpper = styled.div`
     display: grid;
     grid-template-columns: 2fr 2fr;
     grid-template-rows: 120px;
-    background-color: ${theme.white};
+    background-color: ${theme.greyPanelBackground};
     padding: 0 10px;
 
     ${media.giant`
@@ -190,7 +188,7 @@ const NetWorkIcon = styled.img`
 
 
 const SubPanel = styled.div`
-    background-color: rgba(255,255,255,0.75);
+    background-color: rgba(255,255,255,1);
     opacity: 1;
     box-shadow: ${theme.panelShadow};
     border-radius: ${theme.panelRadius};
@@ -407,7 +405,7 @@ class CardDialog extends React.Component {
                         </LogoContainer>
                     </CardDialogUpper>
 
-                    <LayeredBackground>
+                    {/* <LayeredBackground> */}
                             <Title>{this.props.cardName}</Title>
 
                             <CardGridFirstRow>
@@ -473,7 +471,7 @@ class CardDialog extends React.Component {
                         
 
 
-                    </LayeredBackground>
+                    {/* </LayeredBackground> */}
     
                         <CardDialogBottomNav>
                             <ApplyButton variant="extended" cardColor = {this.props.cardColor} >

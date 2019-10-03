@@ -35,8 +35,8 @@ const styles = theme => ({
   });
 
 const RefineMenuContainer = styled.div`
-    background-color: ${theme.greyPanelBackground};
-    border: 1px solid ${theme.greyBorderLight};
+    background-color: ${theme.white};
+    border-bottom: 0px solid ${theme.greyBorderLight};
     border-radius: 0rem;
     margin: 0px 0px;
     padding: 0px 0px;
@@ -52,8 +52,8 @@ const RefineMenuContainerInner = styled.div`
     height: auto;
     margin: auto;
 
-    ${media.giant`max-width: 400px;`}
-    ${media.desktop`max-width: 400px;`}
+    ${media.giant`max-width: 975px;`}
+    ${media.desktop`max-width: 975px;`}
     ${media.tablet`max-width: 100%;`}
     ${media.phone`max-width: 100%;`}
 

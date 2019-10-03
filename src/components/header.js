@@ -24,13 +24,13 @@ const HeaderContainer = styled.div`
   font-family: share tech mono;
   /* font-family: IBM Plex sans; */
   /* background-color: ${theme.greyPanelBackground}; */
-  background-color: ${theme.primary};
+  background-color: ${theme.white};
   /* background-color: #1c7cc7; */
-  background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E");
-  border-bottom: 2px solid ${theme.greyBorderDark};
+  /* background-image: url("data:image/svg+xml,%3Csvg width='6' height='6' viewBox='0 0 6 6' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23000000' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M5 0h1L0 6V5zM6 5v1H5z'/%3E%3C/g%3E%3C/svg%3E"); */
+  border-bottom: 0px solid ${theme.greyBorderLight};
   width: 100vw;
   margin: auto;
-  /* box-shadow: ${theme.panelShadow}; */
+  box-shadow: ${theme.panelShadow};
   min-height: 60px;
   font-weight: 100;
 `
@@ -39,7 +39,7 @@ const HeaderInnerContainer = styled.div`
   max-width: 1000px;
   margin: auto;
   display: grid;
-  grid-template-columns: 65px 1fr 60px;
+  grid-template-columns: 1fr 60px;
   padding: 0 10px;
   /* grid-gap: 10px; */
   /* justify-items: center; */
@@ -57,7 +57,7 @@ const LogoImage = styled.img`
 const LogoText = styled(Link)`
   text-transform: uppercase;
   text-decoration: none;
-  color: ${theme.white};
+  color: ${theme.primary};
   font-weight: 600;
   font-size: 1.5rem;
   letter-spacing: 0px;
@@ -73,8 +73,8 @@ const LogoText = styled(Link)`
       linear,
       left top,
       left bottom,
-      from(#fff),
-      to(#e0e0e0)
+      from(#37A0FF),
+      to(#37A0FF)
     );
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -206,7 +206,7 @@ class Header extends React.Component {
 
         <HeaderContainer>
           <HeaderInnerContainer>
-            <Link to="/"><LogoImage src={logo}  /></Link>
+            {/* <Link to="/"><LogoImage src={logo}  /></Link> */}
             <LogoText to="/">
               <span>{this.props.siteTitle}</span>
             </LogoText>

@@ -37,7 +37,7 @@ const styles = {
 const IconButtonWrapper = styled.div`
   /* width: 25px; */
   text-transform: uppercase;
-  color: ${theme.white};
+  color: ${theme.black};
   font-weight: 600;
   margin-left: 15px;
   font-size: 16px;
