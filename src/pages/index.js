@@ -13,13 +13,13 @@ import GridWrapper from '../components/GridWrapper'
 import DataWrapper from '../components/DataWrapper'
 
 // Load IBM Plex Sans typeface
-require('typeface-ibm-plex-sans')
-require('typeface-lekton')
-require('typeface-share-tech-mono')
+// require('typeface-ibm-plex-sans')
+// require('typeface-lekton')
+// require('typeface-share-tech-mono')
 
 const Container = styled.div`
   color: ${props => props.theme.greyText};
-  font-family: 'IBM Plex Sans';
+  /* font-family: 'IBM Plex Sans'; */
   margin: 3rem auto;
   max-width: 600px;
   display: flex;
@@ -34,21 +34,9 @@ const Container = styled.div`
 `
 
 const IndexPage = ({ data }) => (
-    <Layout>
-      <DataWrapper data={data.allAirtable.edges} />
-      {/* <Link to="/page-2">Go to page 2</Link> */}
-
-
-      {/* <Layout>
-    <ThemeProvider theme={theme}>
-      <div>
-        <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
-        <GridWrapper data={data}></GridWrapper>
-
-      </div>
-    </ThemeProvider>
-  </Layout> */}
-    </Layout>
+  <Layout>
+    <DataWrapper data={data.allAirtable.edges} />
+  </Layout>
 )
 
 export default IndexPage

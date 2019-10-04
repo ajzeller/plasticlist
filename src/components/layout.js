@@ -15,6 +15,9 @@ const mui_theme = createMuiTheme({
     primary: {main: theme.primary},
     secondary: {main: theme.secondary},
   },
+  typography: {
+    fontFamily: 'IBM Plex Sans',
+  }
 
 }
 );

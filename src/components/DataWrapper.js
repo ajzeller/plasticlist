@@ -363,7 +363,7 @@ onReset() {
               ></GridWrapper>
             {this.props.children}
           </MainContainer>
-        </ThemeProvider>
+         </ThemeProvider>
     )
   }
 }

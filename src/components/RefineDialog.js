@@ -36,9 +36,9 @@ import MuiMultipleSelect from '../components/MuiMultipleSelect';
 import 'rc-slider/assets/index.css'
 import 'rc-tooltip/assets/bootstrap.css';
 import '../assets/sliderStyles.css'
+import Tooltip from 'rc-tooltip';
 import Slider from 'rc-slider'
-// import Tooltip from 'rc-tooltip';
-import Tooltip from '@material-ui/core/Tooltip';
+// import Tooltip from '@material-ui/core/Tooltip';
 
 import Select from 'react-select';
 
@@ -48,20 +48,20 @@ const createSliderWithTooltip = Slider.createSliderWithTooltip;
 const Range = createSliderWithTooltip(Slider.Range);
 const Handle = Slider.Handle;
 
-// const handle = (props) => {
-//     const { value, dragging, index, ...restProps } = props;
-//     return (
-//       <Tooltip
-//         prefixCls="rc-slider-tooltip"
-//         overlay={value}
-//         visible={dragging}
-//         placement="top"
-//         key={index}
-//       >
-//         <Handle value={value} {...restProps} />
-//       </Tooltip>
-//     );
-//   };
+const handle = (props) => {
+    const { value, dragging, index, ...restProps } = props;
+    return (
+      <Tooltip
+        prefixCls="rc-slider-tooltip"
+        overlay={value}
+        visible={dragging}
+        placement="top"
+        key={index}
+      >
+        <Handle value={value} {...restProps} />
+      </Tooltip>
+    );
+  };
 
 const RefineItem = styled.div`
     
@@ -81,7 +81,11 @@ const RefineItemSwitch = styled(RefineItem)`
 `
 
 const DialogInner = styled.div`
-    padding: 10px;
+    ${media.giant`padding: 50px;`}    
+    /* ${media.desktop`padding: 50px;`}     */
+    ${media.tablet`padding: 15px;`}    
+    ${media.phone`padding: 10px;`}    
+    /* padding: 10px; */
     overflow-x: hidden;
     /* margin: 0px auto; */
 `
@@ -230,13 +234,14 @@ class RefineDialog extends React.Component {
                                 defaultValue={this.props.bonusBounds} 
                                 marks={{ 0:0, 500: '$500', 1000: "$1k", 1500: '$1.5k', 2000: '$2k' }} 
                                 tipFormatter={value => `${value}`} 
+                                tipFormatter={value => `${value}%`}
                                 // step={null}
                                 trackStyle={[ { backgroundColor: theme.primary } , { borderColor: theme.primary } ]}
                                 // activeDotStyle={[{ borderColor: theme.primary } , { borderColor: theme.primary }]}
                                 // railStyle={[ { backgroundColor: theme.primary } ]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
                                 // handle={handle}
-                                onChange ={ this.props.onBonusChange}
+                                onAfterChange ={ this.props.onBonusChange}
                                 // onChange={() => { this.handleSliderChange(this.state.bounds[1]) } }
                             />
                         </SliderContainer>
@@ -256,7 +261,7 @@ class RefineDialog extends React.Component {
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 // railStyle={[{ backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
-                                onChange ={ this.props.onFeeChange}
+                                onAfterChange ={ this.props.onFeeChange}
                                 // handleStyle={[{ backgroundColor: 'yellow' }, { backgroundColor: 'gray' }]}
 
 
@@ -278,7 +283,7 @@ class RefineDialog extends React.Component {
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 // railStyle={[ { backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
-                                onChange ={ this.props.onSpendingChange}
+                                onAfterChange ={ this.props.onSpendingChange}
                             />
                         </SliderContainer>
 
@@ -297,7 +302,7 @@ class RefineDialog extends React.Component {
                                 trackStyle={[ { backgroundColor: theme.primary }]}
                                 // railStyle={[ { backgroundColor: theme.primary }]}
                                 handleStyle={[{ borderColor: theme.primary, backgroundColor: theme.primary }, {borderColor: theme.primary, backgroundColor: theme.primary }]}
-                                onChange ={ this.props.onCashBackChange}
+                                onAfterChange ={ this.props.onCashBackChange}
                             />
                         </SliderContainer>
 
