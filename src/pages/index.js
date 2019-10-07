@@ -12,7 +12,8 @@ import SEO from '../components/seo'
 import GridWrapper from '../components/GridWrapper'
 import DataWrapper from '../components/DataWrapper'
 
-Load IBM Plex Sans typeface
+// Load IBM Plex Sans typeface
+
 require('typeface-ibm-plex-sans')
 require('typeface-lekton')
 require('typeface-share-tech-mono')
